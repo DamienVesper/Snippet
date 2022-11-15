@@ -1,0 +1,46 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "eslint:recommended",
+        "standard-with-typescript"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+    },
+    "plugins": [
+        "@typescript-eslint",
+        "react",
+        "react-hooks"
+    ],
+    "rules": {
+        "@typescript-eslint/indent": ["error", 4, { "SwitchCase": 1 }],
+        "indent": ["error", 4, { "SwitchCase": 1 }],
+        "@typescript-eslint/semi": [2, "always"],
+        "semi": [2, "always"],
+        "@typescript-eslint/quotes": [2, "backtick", "avoid-escape"],
+        "quotes": [2, "backtick", "avoid-escape"],
+        "no-use-before-define": 0,
+        "no-unused-vars": 0,
+        "@typescript-eslint/no-use-before-define": 2,
+        "@typescript-eslint/no-unused-vars": 2,
+        "prefer-arrow-callback": 2,
+        "prefer-template": 2,
+        "@typescript-eslint/curly": 0
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    }
+}

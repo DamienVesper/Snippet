@@ -1,0 +1,62 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+
+permissions:
+  contents: write
+
+jobs:
+  client:
+    name: Client
+    runs-on: ubuntu-latest
+    concurrency: ci-client-${{ github.ref }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Install pNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7.9.5
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Packages
+        working-directory: ./client
+        run: pnpm install
+
+      - name: Build
+        working-directory: ./client
+        run: pnpm run build
+  server:
+    name: Server
+    runs-on: ubuntu-latest
+    concurrency: ci-server-${{ github.ref }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Install pNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7.9.5
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Packages
+        working-directory: ./server
+        run: pnpm install
+
+      - name: Build
+        working-directory: ./server
+        run: pnpm run build
