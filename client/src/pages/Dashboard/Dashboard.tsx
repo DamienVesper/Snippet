@@ -29,21 +29,21 @@ class Dashboard extends React.Component {
                 </div>
                 <div className="dash-content tw-mt-2">
                     <div className="dash-config-container">
-                        <div className="dash-config">
+                        <div className="dash-config tw-mr-[7.5px]">
                             <h5 className="tw-mb-5">ShareX Config</h5>
                             <div className="dash-config-btns">
                                 <a href={`${API_URL}/settings/config`} target="_blank" rel="noreferrer" className="btn btn-sm btn-success download-btn">
                                     <FontAwesomeIcon icon={faDownload} />
-                                    <span>Download</span>
+                                    <span className="tw-ml-1">Download</span>
                                 </a>
                                 <a href="#" className="btn btn-sm btn-danger tutorial-btn disabled">
                                     <FontAwesomeIcon icon={faDesktop} />
-                                    <span>Tutorial</span>
+                                    <span className="tw-ml-1">Tutorial</span>
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div className="dash-pictures">
+                    <div className="dash-pictures tw-ml-[7.5px]">
                         <h5>Uploaded Pictures</h5>
                     </div>
                 </div>
