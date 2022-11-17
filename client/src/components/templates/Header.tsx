@@ -28,7 +28,6 @@ class Header extends React.Component<Record<string, never>, HeaderState> {
         <header>
             <nav className="navbar navbar-expand-lg tw-bg-[#00000040] navbar-dark">
                 <div className="container-fluid">
-                    {/* <a href="/"><Logo /></a> */}
                     <a href="/" className="navbar-brand">
                         <img className="tw-w-[30px] tw-mr-2 d-inline-block" src={Logo} />
                         Snippet
@@ -40,23 +39,8 @@ class Header extends React.Component<Record<string, never>, HeaderState> {
                         <ul className="navbar-nav">
                             {this.state.account.authenticated && <li className="nav-item "><a href="/dashboard" className={`nav-link${window.location.pathname === `/dashboard` ? ` active` : ``}`} aria-current="page">Dashboard</a></li>}
                             <li className="nav-item"><a href="/support" className={`nav-link${window.location.pathname === `/support` ? ` active` : ``}`} aria-current="page">Support</a></li>
-                            {/* <li className="nav-item"><a href="#" className="nav-link" aria-current="page">Link</a></li> */}
-                            {/* <li className="nav-item dropdown">
-                                <a href="#" className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
-                                <ul className="dropdown-menu">
-                                    <li><a href="#" className="dropdown-item">Action 1</a></li>
-                                    <li><a href="#" className="dropdown-item">Action 2</a></li>
-                                    <li><hr className="dropdown-divider" /></li>
-                                    <li><a href="#" className="dropdown-item">Action 3</a></li>
-                                </ul>
-                            </li> */}
                             <li className="nav-link disabled"></li>
                         </ul>
-
-                        {/* <form action="" className="tw-flex" role="search">
-                            <input type="search" className="form-control me-2" placeholder="Search" aria-label="Search" />
-                            <button type="submit" className="btn btn-outline-success">Search</button>
-                        </form> */}
                         <ul className="navbar-nav ms-auto mb-1 mb-lg-0">
                             <li className={`nav-item dropdown nav-profile-menu${!this.state.account.authenticated ? ` d-none` : ``}`}>
                                 <a href="#" className="nav-link btn" id="profile-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -81,10 +65,6 @@ class Header extends React.Component<Record<string, never>, HeaderState> {
                                         </a>
                                     </li>
                                     <li>
-                                        {/* <a href="/calendar" className="dropdown-item profile-settings-opt">
-                                            <i className="icofont icofont-calendar tw-mr-1"></i>
-                                            Calendar
-                                        </a> */}
                                     </li>
                                     <li>
                                         <a href="/settings" className="dropdown-item profile-settings-opt">
