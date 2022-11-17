@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import config from '../../../config/config';
 
 import { Router } from 'express';
-import config from '../../../config/config';
 
 import log from '../../utils/log';
 
