@@ -5,6 +5,8 @@ import { faDownload, faDesktop } from '@fortawesome/free-solid-svg-icons';
 
 import '../../assets/scss/pages/dashboard.scss';
 
+declare const API_URL: string;
+
 // interface UserData {
 //     authenticated: boolean
 
@@ -30,11 +32,11 @@ class Dashboard extends React.Component {
                         <div className="dash-config">
                             <h5 className="tw-mb-5">ShareX Config</h5>
                             <div className="dash-config-btns">
-                                <a href="/api/settings/config" target="_blank" className="btn btn-sm btn-success download-btn">
+                                <a href={`${API_URL}/settings/config`} target="_blank" rel="noreferrer" className="btn btn-sm btn-success download-btn">
                                     <FontAwesomeIcon icon={faDownload} />
                                     <span>Download</span>
                                 </a>
-                                <a href="#" className="btn btn-sm btn-danger tutorial-btn">
+                                <a href="#" className="btn btn-sm btn-danger tutorial-btn disabled">
                                     <FontAwesomeIcon icon={faDesktop} />
                                     <span>Tutorial</span>
                                 </a>
