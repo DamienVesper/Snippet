@@ -109,6 +109,7 @@ class Header extends React.Component<Record<string, never>, HeaderState> {
     );
 
     componentDidMount = async (): Promise<void> => {
+        if (window.location.pathname === `/`) return;
         await axios.get(`${API_URL}/auth/authenticated`, { withCredentials: true }).then(res => {
             const data: { authenticated: boolean, username?: string, avatar?: string } = res.data;
             if (data.authenticated) this.setState({ account: { authenticated: true, username: data.username, avatar: data.avatar } });

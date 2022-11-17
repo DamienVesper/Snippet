@@ -10,8 +10,9 @@ import Header from './components/templates/Header';
 import Footer from './components/templates/Footer';
 
 import Home from './pages/Home';
-
 import Error404 from './pages/404';
+
+import Dashboard from './pages/Dashboard/Dashboard';
 
 import './assets/css/icofont/icofont.min.css';
 import './assets/scss/main.scss';
@@ -25,6 +26,7 @@ class App extends React.Component {
             <Router>
                 <Routes>
                     <Route path="/" element={<Home />} />
+                    <Route path="/dashboard" element={<Dashboard />} />
 
                     <Route path="/*" element={<Error404 />} />
                 </Routes>
