@@ -15,7 +15,17 @@ const discordStrategy = new DiscordStrategy({
     scope: [`identify`, `email`]
 }, (accessToken: string, refreshToken: string, profile: DiscordStrategy.Profile, callback: VerifyCallback) => {
     void User.findOne({ discordID: profile.id }).then(userExists => {
-        if (userExists !== null) return callback(null, userExists);
+        // Update profile data on login.
+        if (userExists !== null) {
+            userExists.username = profile.username;
+            userExists.email = profile.email as string;
+            userExists.avatar = profile.avatar ?? ``;
+
+            void userExists.save();
+
+            return callback(null, userExists);
+        }
+
         void User.findOne({ username: profile.username }).then(userExists => {
             if (userExists !== null) return callback(null, userExists);
 
@@ -28,7 +38,7 @@ const discordStrategy = new DiscordStrategy({
                 username: profile.username,
                 email: profile.email,
                 discordID: profile.id,
-                avatarURL: profile.avatar
+                avatar: profile.avatar
             });
 
             void user.save((err) => {

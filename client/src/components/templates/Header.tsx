@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 
-// import Logo from '../Logo';
+import Logo from '../../assets/img/logos/favicon.png';
 
 declare const API_URL: string;
 
@@ -26,20 +26,20 @@ class Header extends React.Component<Record<string, never>, HeaderState> {
 
     render = (): React.ReactNode => (
         <header>
-            <nav className="navbar navbar-expand-sm  tw-bg-gradient-to-b tw-from-[rgba(160,160,160,0.3)] tw-via-[rgba(160,160,160,0.3)] tw-to-[rgba(195,195,195,0.25)]">
+            <nav className="navbar navbar-expand-lg tw-bg-[#00000040] navbar-dark">
                 <div className="container-fluid">
                     {/* <a href="/"><Logo /></a> */}
-                    <a href="/" className="navbar-brand ps-2 fs-2 fw-semibold">Snippet</a>
+                    <a href="/" className="navbar-brand">
+                        <img className="tw-w-[30px] tw-mr-2 d-inline-block" src={Logo} />
+                        Snippet
+                    </a>
                     <button className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div className="collapse navbar-collapse " id="navbarSupportedContent">
-                        <ul className="navbar-nav ms-4 ">
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav">
                             {this.state.account.authenticated && <li className="nav-item "><a href="/dashboard" className={`nav-link${window.location.pathname === `/dashboard` ? ` active` : ``}`} aria-current="page">Dashboard</a></li>}
-                            {this.state.account.authenticated && <li className="nav-item"><a href="/join-class" className={`nav-link${window.location.pathname === `/join-class` ? ` active` : ``}`} aria-current="page">
-                                <i className="icofont icofont-plugin tw-select-none tw-text-[#c9c9c9] tw-mix-blend-exclusion me-1"></i>
-                                Join Class
-                            </a></li>}
+                            <li className="nav-item"><a href="/support" className={`nav-link${window.location.pathname === `/support` ? ` active` : ``}`} aria-current="page">Support</a></li>
                             {/* <li className="nav-item"><a href="#" className="nav-link" aria-current="page">Link</a></li> */}
                             {/* <li className="nav-item dropdown">
                                 <a href="#" className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
@@ -60,10 +60,12 @@ class Header extends React.Component<Record<string, never>, HeaderState> {
                         <ul className="navbar-nav ms-auto mb-1 mb-lg-0">
                             <li className={`nav-item dropdown nav-profile-menu${!this.state.account.authenticated ? ` d-none` : ``}`}>
                                 <a href="#" className="nav-link btn" id="profile-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i className="icofont icofont-user-alt-7 me-1"></i>
+                                    {this.state.account.avatar !== null
+                                        ? <img className="tw-w-[25px] tw-mr-2 d-inline-block tw-rounded-full" src={this.state.account.avatar} />
+                                        : <i className="icofont icofont-user-alt-7 tw-mr-2"></i>
+                                    }
                                     <span>{this.state.account.username}</span>
                                 </a>
-                                <div className="welcome-string"></div>
                                 <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="profile-dropdown">
                                     {/* <li>
                                         <a href="/profile" className="dropdown-item profile-settings-opt">

@@ -11,20 +11,20 @@ interface UserDoc extends Mongoose.Document {
     username: string
     email: string
     discordID: string
-    avatarURL?: string
+    avatar?: string
 }
 
 const UserSchema = new Mongoose.Schema({
     created: { type: Date, required: true },
     id: { type: String, required: true, unique: true },
 
-    banned: { type: Boolean, required: false, default: true },
+    banned: { type: Boolean, required: false, default: false },
     rank: { type: String, required: false, default: `USER` },
 
-    username: { type: String, required: true, maxlength: 32, unique: true },
+    username: { type: String, required: true, maxlength: 32 },
     email: { type: String, required: true, unique: true },
     discordID: { type: String, required: true, unique: true },
-    avatarURL: { type: String, required: false }
+    avatar: { type: String, required: false }
 });
 
 const User = Mongoose.model<UserDoc>(`User`, UserSchema);

@@ -15,10 +15,10 @@ router.get(`/`, (req, res) => {
 
     log(`magenta`, `[AUTH]: "${((req.user as any).username as string)}" logged in.`);
 
-    res.redirect(req.headers.host.includes(`localhost`)
+    res.redirect(`${req.headers.host.includes(`localhost`)
         ? `http://localhost:3000`
         : config.domain
-    );
+    }/dashboard`);
 });
 
 export default router;

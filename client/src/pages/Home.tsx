@@ -12,7 +12,7 @@ declare const API_URL: string;
 
 class Home extends React.Component<Record<string, never>, { isLoggedIn: boolean }> {
     render = (): React.ReactNode => (
-        <main className="tw-text-dark tw-text-center container">
+        <main className="tw-text-center container">
             <br />
             <br />
             <br />
