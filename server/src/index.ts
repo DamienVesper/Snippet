@@ -14,11 +14,14 @@ import registerRoutes from './utils/registerRoutes';
 const main = async (): Promise<void> => {
     // Boot screen.
     console.clear();
+
     logExtra.logSplash();
     logExtra.logHeader();
 
     // Database connection.
+    Mongoose.set(`strictQuery`, true);
     await Mongoose.connect((process.env.MONGO_URI as string));
+
     log(`green`, `Connected to database.`);
     logExtra.logHeader();
 
