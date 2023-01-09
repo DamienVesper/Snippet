@@ -16,7 +16,7 @@ import { string as randomString } from '../../../utils/randomizer';
 
 const router = Router();
 
-router.get(`/`, (req, res) => {
+router.post(`/`, (req, res) => {
     const form = new IncomingForm();
     form.parse(req, (err, fields: { key: string }, files) => {
         if (err !== undefined && err !== null) {
@@ -29,8 +29,7 @@ router.get(`/`, (req, res) => {
         }
 
         const authKey = fields.key;
-
-        if (fields.key === undefined) {
+        if (authKey === undefined) {
             res.status(400).send(`400 Bad Request`);
             return;
         }
@@ -47,7 +46,7 @@ router.get(`/`, (req, res) => {
                 created: new Date(),
                 id: createID(),
 
-                author: (req.user as any).id,
+                author: user.id,
 
                 name: randomString(5),
                 extension: path.parse((file.fdata as any).originalFilename).ext
@@ -57,8 +56,8 @@ router.get(`/`, (req, res) => {
             void media.save()
                 .then(() => {
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    void fs.rename((file.fdata as any).filepath, path.resolve(`/var/www/ShareX/i`, fileName), () => {
-                        res.status(200).send(`https://${config.domain}/i/${fileName}`);
+                    void fs.rename((file.fdata as any).filepath, path.resolve(`/usr/share/sharex/i`, fileName), () => {
+                        res.status(200).send(`${config.domain}/i/${fileName}`);
                     });
                 }).catch(err => log(`red`, err));
         });

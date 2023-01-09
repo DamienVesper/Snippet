@@ -1,0 +1,12 @@
+{
+    "Version": "13.6.0",
+    "Name": "Snippet",
+    "DestinationType": "ImageUploader, FileUploader",
+    "RequestMethod": "POST",
+    "RequestURL": "https://example.domain.tld/api/upload/file",
+    "Body": "MultipartFormData",
+    "Arguments": {
+        "key": "my_user_key"
+    },
+    "FileFormName": "fdata"
+}

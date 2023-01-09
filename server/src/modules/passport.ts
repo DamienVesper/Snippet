@@ -8,6 +8,12 @@ import { VerifyCallback } from 'passport-oauth2';
 import { User } from '../models/user.model';
 import { createID } from '@boatgame-io/id-utils';
 
+import * as fs from 'fs';
+
+import * as randomizer from '../utils/randomizer';
+
+import ExampleUserConfig from '../../../ShareX.json';
+
 const discordStrategy = new DiscordStrategy({
     clientID: (process.env.CLIENT_ID as string),
     clientSecret: (process.env.CLIENT_SECRET as string),
@@ -38,8 +44,15 @@ const discordStrategy = new DiscordStrategy({
                 username: profile.username,
                 email: profile.email,
                 discordID: profile.id,
-                avatar: profile.avatar
+                avatar: profile.avatar,
+
+                token: randomizer.string(64)
             });
+
+            const userConfig = ExampleUserConfig;
+            userConfig.Arguments.key = user.token;
+
+            fs.writeFileSync(`/usr/share/sharex/configs/${user.id}.sxcu`, JSON.stringify(userConfig), `utf-8`);
 
             void user.save((err) => {
                 if (err != null) return callback(err);

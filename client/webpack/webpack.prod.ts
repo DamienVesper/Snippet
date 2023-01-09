@@ -30,7 +30,7 @@ const config = merge(common, {
             cleanAfterEveryBuildPatterns: [`**/*.LICENSE.txt`],
             protectWebpackAssets: false
         }),
-        new DefinePlugin({ API_URL: `\`https://${process.env.API_URL ?? ``}/api\`` })
+        new DefinePlugin({ API_URL: `\`${process.env.API_URL ?? ``}\`` })
     ]
 });
 

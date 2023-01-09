@@ -12,7 +12,7 @@ router.get(`/`, (req, res) => {
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const fileLocation = `/var/www/ShareX/configs/${((req.user as any).id as string)}.sxcu`;
+    const fileLocation = `/usr/share/sharex/configs/${((req.user as any).id as string)}.sxcu`;
 
     if (!fs.existsSync(fileLocation)) {
         res.status(500).send(`500 Internal Server Error`);
