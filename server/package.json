@@ -58,7 +58,7 @@
     "formidable": "^2.1.1",
     "helmet": "^6.0.1",
     "mongodb": "^4.13.0",
-    "mongoose": "^6.8.3",
+    "mongoose": "^6.11.3",
     "passport": "^0.6.0",
     "passport-discord": "^0.1.4",
     "passport-google": "^0.3.0",
