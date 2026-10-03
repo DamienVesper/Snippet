@@ -14,7 +14,7 @@
   "dependencies": {
     "@hono/zod-validator": "^0.9.1",
     "drizzle-orm": "^0.45.3",
-    "hono": "^4.13.10",
+    "hono": "^4.13.12",
     "obscenity": "^0.4.6",
     "proxycheck-ts": "^0.0.11",
     "zod": "^4.6.5"
@@ -22,5 +22,8 @@
   "devDependencies": {
     "@types/bun": "^1.4.2",
     "drizzle-kit": "^0.31.11"
+  },
+  "imports": {
+    "#/common/*": "../common/src/*"
   }
 }

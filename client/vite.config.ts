@@ -10,10 +10,11 @@ export default defineConfig(({ mode }) => {
 
     const plugins: PluginOption[] = [tailwindcss(), sveltekit({
         adapter: adapter({ precompress: true }),
-        alias: {
-            "@/common": "../common/src"
+        compilerOptions: {
+            // Force runes mode for the project, except for libraries. Can be removed in svelte 6.
+            runes: ({ filename }) =>
+                filename.split(/[/\\]/).includes('node_modules') ? undefined : true
         },
-        configFile: false,
         preprocess: vitePreprocess(),
     })];
 
@@ -52,9 +53,6 @@ export default defineConfig(({ mode }) => {
             stringify: true
         },
 
-        plugins,
-
-        logLevel: isDev ? "info" : "warn",
-        clearScreen: false
+        plugins
     };
 });
