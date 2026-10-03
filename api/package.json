@@ -1,0 +1,26 @@
+{
+  "name": "@snippet/api",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "bun build src/index.ts --outdir=build --target bun --production",
+    "build:db": "NODE_ENV=\"drizzle\" bun build src/drizzle.config.ts src/models/*.ts --outdir=drizzle --target bun --minify",
+    "db:generate": "NODE_ENV=\"drizzle\" bun --bun drizzle-kit generate --config drizzle/src/drizzle.config.js",
+    "db:push": "NODE_ENV=\"drizzle\" bun --bun drizzle-kit push --config drizzle/src/drizzle.config.js",
+    "dev": "bun --watch src/index.ts",
+    "start": "bun build/index.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@hono/zod-validator": "^0.9.1",
+    "drizzle-orm": "^0.45.3",
+    "hono": "^4.13.10",
+    "obscenity": "^0.4.6",
+    "proxycheck-ts": "^0.0.11",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.2",
+    "drizzle-kit": "^0.31.11"
+  }
+}

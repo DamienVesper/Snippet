@@ -1,0 +1,35 @@
+name: API
+on:
+  push:
+    branches:
+      - master
+    paths: &paths
+      - "api/**"
+      - "common/**"
+      - "*.json"
+      - "bun.lock"
+      - ".github/workflows/api.yml"
+  pull_request:
+    paths: *paths
+jobs:
+  api:
+    name: API
+    runs-on: ubuntu-latest
+    concurrency: ci-api-${{ github.ref }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v7
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install Packages
+        run: bun ci --filter . --filter ./common --filter ./api
+
+      - name: Typecheck API
+        run: bun typecheck
+        working-directory: ./api
+
+      - name: Build API
+        run: bun run build
+        working-directory: ./api

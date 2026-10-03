@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SXCU Schema",
+  "type": "object",
+  "properties": {
+    "Version": {
+      "type": "string",
+      "description": "The version of ShareX this profile targets."
+    },
+    "Name": {
+      "type": "string",
+      "description": "The display name for the custom uploader configuration."
+    },
+    "DestinationType": {
+      "type": "string",
+      "description": "Type of target destination. Multiple values can be comma-separated.",
+      "enum": [
+        "None", 
+        "ImageUploader", 
+        "TextUploader", 
+        "FileUploader", 
+        "URLShortener", 
+        "URLSharingService",
+        "ImageUploader, TextUploader, FileUploader"
+      ]
+    },
+    "RequestMethod": {
+      "type": "string",
+      "enum": ["GET", "POST", "PUT", "PATCH", "DELETE"],
+      "description": "The HTTP method utilized for the primary upload request."
+    },
+    "RequestURL": {
+      "type": "string",
+      "format": "uri",
+      "description": "The destination endpoint URL where requests are processed."
+    },
+    "Parameters": {
+      "type": "object",
+      "additionalProperties": { "type": "string" },
+      "description": "URL query parameters appended to the Request URL."
+    },
+    "Headers": {
+      "type": "object",
+      "additionalProperties": { "type": "string" },
+      "description": "HTTP request headers (e.g., Authorization tokens, User-Agent)."
+    },
+    "Body": {
+      "type": "string",
+      "enum": ["None", "MultipartFormData", "FormURLEncoded", "JSON", "XML", "Binary"],
+      "description": "The data format format expected by the receiving endpoint."
+    },
+    "Arguments": {
+      "type": "object",
+      "additionalProperties": { "type": "string" },
+      "description": "Form data payloads sent alongside the file in the request body."
+    },
+    "FileFormName": {
+      "type": "string",
+      "description": "The name of the multipart form field that contains the file payload data."
+    },
+    "URL": {
+      "type": "string",
+      "description": "The template parser syntax mapping to the direct file URL return string."
+    },
+    "ThumbnailURL": {
+      "type": "string",
+      "description": "The template parser syntax mapping to a small preview/thumbnail URL."
+    },
+    "DeletionURL": {
+      "type": "string",
+      "description": "The template parser syntax mapping to the absolute URL required to delete the resource."
+    },
+    "ErrorMessage": {
+      "type": "string",
+      "description": "The template parser mapping to catch system error strings from API payloads."
+    }
+  },
+  "required": ["Name", "DestinationType", "RequestMethod", "RequestURL"]
+}

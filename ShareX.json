@@ -1,12 +1,13 @@
 {
-    "Version": "13.6.0",
+    "$schema": "./SXCUSchema.json",
+    "Version": "21.0.0",
     "Name": "Snippet",
-    "DestinationType": "ImageUploader, FileUploader",
+    "DestinationType": "ImageUploader, TextUploader, FileUploader",
     "RequestMethod": "POST",
-    "RequestURL": "https://example.domain.tld/api/upload/file",
+    "RequestURL": "https://example.domain.tld/api/upload",
     "Body": "MultipartFormData",
     "Arguments": {
-        "key": "my_user_key"
+        "Authorization": "Bearer apikey"
     },
     "FileFormName": "fdata"
 }
