@@ -1,13 +1,18 @@
+<!--
+SPDX-FileCopyrightText: 2026 Damien Vesper <ldamienvesper@gmail.com>
+SPDX-License-Identifier: AGPL-3.0-only
+-->
+
 <script lang="ts">
     import "#lib/css/index.css";
 
-    import favicon from "#lib/img/favicon.svg";
+    // import favicon from "#lib/img/favicon.svg";
 
     const { children } = $props();
 </script>
 
-<svelte:head>
+<!-- <svelte:head>
 	<link rel="icon" href={favicon} />
-</svelte:head>
+</svelte:head> -->
 
 {@render children()}

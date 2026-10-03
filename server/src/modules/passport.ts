@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 Damien Vesper <ldamienvesper@gmail.com>
+// SPDX-License-Identifier: AGPL-3.0-only
+
 import { createID } from "@boatgame-io/id-utils";
 import passport from "passport";
 import { Strategy as DiscordStrategy } from "passport-discord";

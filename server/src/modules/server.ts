@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 Damien Vesper <ldamienvesper@gmail.com>
+// SPDX-License-Identifier: AGPL-3.0-only
+
 import MongoStore from "connect-mongo";
 import Express from "express";
 import session from "express-session";

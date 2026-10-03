@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 Damien Vesper <ldamienvesper@gmail.com>
+// SPDX-License-Identifier: AGPL-3.0-only
+
 import adapter from "@sveltejs/adapter-node";
 import { sveltekit } from "@sveltejs/kit/vite";
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";

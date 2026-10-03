@@ -1,0 +1,6 @@
+{% for copyright in copyright_lines -%}
+{{ copyright }}
+{% endfor -%}
+{% for expression in spdx_expressions -%}
+SPDX-License-Identifier: {{ expression }}
+{% endfor -%}
