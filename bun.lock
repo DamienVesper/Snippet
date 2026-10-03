@@ -34,6 +34,7 @@
       "name": "@snippet/client",
       "dependencies": {
         "@lucide/svelte": "^1.51.0",
+        "zod": "^4.6.5",
       },
       "devDependencies": {
         "@sveltejs/adapter-node": "^6.0.0",

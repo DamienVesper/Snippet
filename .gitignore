@@ -7,3 +7,8 @@ config.hjson
 
 # Dependencies
 node_modules/
+
+# Secrets
+.env
+.env.*
+!.env.example
