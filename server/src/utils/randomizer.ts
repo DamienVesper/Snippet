@@ -3,7 +3,7 @@
  * @param min The minimum amount specified for the range.
  * @param max The maximum amount specified for the range.
  */
-const int = (min: number, max: number): number => Math.floor(Math.random() * ((max + 1) - min)) + min;
+const int = (min: number, max: number): number => Math.floor(Math.random() * (max + 1 - min)) + min;
 
 /**
  * Generate a random string.
@@ -18,7 +18,4 @@ const string = (length: number): string => {
     return text;
 };
 
-export {
-    int,
-    string
-};
+export { int, string };

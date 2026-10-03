@@ -1,4 +1,4 @@
-import { author, version } from '../../package.json';
+import { author, version } from "../../package.json";
 
 /**
  * Log a header to the console.
@@ -11,7 +11,9 @@ const logHeader = (): void => {
  * Log the splash screen.
  */
 const logSplash = (): void => {
-    console.log(`\x1b[34m`, `
+    console.log(
+        `\x1b[34m`,
+        `
     
     ███████╗███╗   ██╗██╗██████╗ ██████╗ ███████╗████████╗
     ██╔════╝████╗  ██║██║██╔══██╗██╔══██╗██╔════╝╚══██╔══╝
@@ -21,10 +23,8 @@ const logSplash = (): void => {
     ╚══════╝╚═╝  ╚═══╝╚═╝╚═╝     ╚═╝     ╚══════╝   ╚═╝   
                                                                                                                   
             Created by ${author} | v${version}
-    `);
+    `
+    );
 };
 
-export {
-    logHeader,
-    logSplash
-};
+export { logHeader, logSplash };

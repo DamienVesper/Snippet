@@ -1,8 +1,8 @@
 {
-  	"$schema": "https://www.schemastore.org/tsconfig.json",
-  	"extends": ["../tsconfig.base.json", "$app/tsconfig"],
-	"compilerOptions": {
-		"strict": true
-	},
-	"include": ["src", "../common", "vite.config.ts"]
+  "$schema": "https://www.schemastore.org/tsconfig.json",
+  "extends": ["../tsconfig.base.json", "$app/tsconfig"],
+  "compilerOptions": {
+    "strict": true
+  },
+  "include": ["src", "../common", "vite.config.ts"]
 }

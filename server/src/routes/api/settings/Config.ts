@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { Router } from 'express';
-import * as fs from 'fs';
+import { Router } from "express";
+
+import * as fs from "fs";
 
 const router = Router();
 
@@ -12,7 +13,7 @@ router.get(`/`, (req, res) => {
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const fileLocation = `/usr/share/sharex/configs/${((req.user as any).id as string)}.sxcu`;
+    const fileLocation = `/usr/share/sharex/configs/${(req.user as any).id as string}.sxcu`;
 
     if (!fs.existsSync(fileLocation)) {
         res.status(500).send(`500 Internal Server Error`);

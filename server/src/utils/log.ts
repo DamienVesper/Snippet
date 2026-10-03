@@ -1,11 +1,13 @@
-
 /**
  * Log something to console.
  * @author DamienVesper
  * @param color The color to log as.
  * @param content The content to log.
  */
-const log = (color: `black` | `red` | `green` | `yellow` | `blue` | `magenta` | `cyan` | `white`, ...content: string[]): void => {
+const log = (
+    color: `black` | `red` | `green` | `yellow` | `blue` | `magenta` | `cyan` | `white`,
+    ...content: string[]
+): void => {
     // Set timing variables.
     const time = new Date();
     const second = time.getSeconds().toString().padStart(2, `0`);

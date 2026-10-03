@@ -8,15 +8,19 @@ import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 export default defineConfig(({ mode }) => {
     const isDev = mode === "development";
 
-    const plugins: PluginOption[] = [tailwindcss(), sveltekit({
-        adapter: adapter({ precompress: true }),
-        compilerOptions: {
-            // Force runes mode for the project, except for libraries. Can be removed in svelte 6.
-            runes: ({ filename }) =>
-                filename.split(/[/\\]/).includes('node_modules') ? undefined : true
-        },
-        preprocess: vitePreprocess(),
-    })];
+    const plugins: PluginOption[] = [
+        tailwindcss({
+            optimize: false
+        }),
+        sveltekit({
+            adapter: adapter({ precompress: true }),
+            compilerOptions: {
+                // Force runes mode for the project, except for libraries. Can be removed in svelte 6.
+                runes: ({ filename }) => (filename.split(/[/\\]/).includes("node_modules") ? undefined : true)
+            },
+            preprocess: vitePreprocess()
+        })
+    ];
 
     const serverOptions: ServerOptions = {
         port: 3000,
@@ -41,18 +45,15 @@ export default defineConfig(({ mode }) => {
                 }
             }
         },
-
-        server: serverOptions,
-        preview: serverOptions,
-
         css: {
-            devSourcemap: isDev
+            devSourcemap: isDev,
+            transformer: "lightningcss"
         },
-
         json: {
             stringify: true
         },
-
-        plugins
+        plugins,
+        preview: serverOptions,
+        server: serverOptions
     };
 });

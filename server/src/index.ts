@@ -1,12 +1,11 @@
-import config from '../config/config';
+import Mongoose from "mongoose";
 
-import Mongoose from 'mongoose';
+import app from "./modules/server";
+import log from "./utils/log";
+import * as logExtra from "./utils/logExtra";
+import registerRoutes from "./utils/registerRoutes";
 
-import app from './modules/server';
-
-import log from './utils/log';
-import * as logExtra from './utils/logExtra';
-import registerRoutes from './utils/registerRoutes';
+import config from "../config/config";
 
 /**
  * Start the API server.
@@ -20,7 +19,7 @@ const main = async (): Promise<void> => {
 
     // Database connection.
     Mongoose.set(`strictQuery`, true);
-    await Mongoose.connect((process.env.MONGO_URI as string));
+    await Mongoose.connect(process.env.MONGO_URI as string);
 
     log(`green`, `Connected to database.`);
     logExtra.logHeader();

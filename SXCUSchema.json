@@ -15,11 +15,11 @@
       "type": "string",
       "description": "Type of target destination. Multiple values can be comma-separated.",
       "enum": [
-        "None", 
-        "ImageUploader", 
-        "TextUploader", 
-        "FileUploader", 
-        "URLShortener", 
+        "None",
+        "ImageUploader",
+        "TextUploader",
+        "FileUploader",
+        "URLShortener",
         "URLSharingService",
         "ImageUploader, TextUploader, FileUploader"
       ]

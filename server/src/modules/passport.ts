@@ -1,66 +1,65 @@
-import config from '../../config/config';
+import { createID } from "@boatgame-io/id-utils";
+import passport from "passport";
+import { Strategy as DiscordStrategy } from "passport-discord";
+import { VerifyCallback } from "passport-oauth2";
 
-import passport from 'passport';
+import * as fs from "fs";
 
-import { Strategy as DiscordStrategy } from 'passport-discord';
-import { VerifyCallback } from 'passport-oauth2';
+import ExampleUserConfig from "../../../ShareX.json";
+import config from "../../config/config";
+import { User } from "../models/user.model";
+import * as randomizer from "../utils/randomizer";
 
-import { User } from '../models/user.model';
-import { createID } from '@boatgame-io/id-utils';
+const discordStrategy = new DiscordStrategy(
+    {
+        clientID: process.env.CLIENT_ID as string,
+        clientSecret: process.env.CLIENT_SECRET as string,
+        callbackURL: `${config.baseURL}/auth/discord`,
+        scope: [`identify`, `email`]
+    },
+    (accessToken: string, refreshToken: string, profile: DiscordStrategy.Profile, callback: VerifyCallback) => {
+        void User.findOne({ discordID: profile.id }).then(userExists => {
+            // Update profile data on login.
+            if (userExists !== null) {
+                userExists.username = profile.username;
+                userExists.email = profile.email as string;
+                userExists.avatar = profile.avatar ?? ``;
 
-import * as fs from 'fs';
+                void userExists.save();
 
-import * as randomizer from '../utils/randomizer';
+                return callback(null, userExists);
+            }
 
-import ExampleUserConfig from '../../../ShareX.json';
+            void User.findOne({ username: profile.username }).then(userExists => {
+                if (userExists !== null) return callback(null, userExists);
 
-const discordStrategy = new DiscordStrategy({
-    clientID: (process.env.CLIENT_ID as string),
-    clientSecret: (process.env.CLIENT_SECRET as string),
-    callbackURL: `${config.baseURL}/auth/discord`,
-    scope: [`identify`, `email`]
-}, (accessToken: string, refreshToken: string, profile: DiscordStrategy.Profile, callback: VerifyCallback) => {
-    void User.findOne({ discordID: profile.id }).then(userExists => {
-        // Update profile data on login.
-        if (userExists !== null) {
-            userExists.username = profile.username;
-            userExists.email = profile.email as string;
-            userExists.avatar = profile.avatar ?? ``;
+                const user = new User({
+                    created: new Date(),
+                    id: createID(),
 
-            void userExists.save();
+                    rank: `USER`,
 
-            return callback(null, userExists);
-        }
+                    username: profile.username,
+                    email: profile.email,
+                    discordID: profile.id,
+                    avatar: profile.avatar,
 
-        void User.findOne({ username: profile.username }).then(userExists => {
-            if (userExists !== null) return callback(null, userExists);
+                    token: randomizer.string(64)
+                });
 
-            const user = new User({
-                created: new Date(),
-                id: createID(),
+                const userConfig = ExampleUserConfig;
+                userConfig.Arguments.key = user.token;
 
-                rank: `USER`,
+                fs.writeFileSync(`/usr/share/sharex/configs/${user.id}.sxcu`, JSON.stringify(userConfig), `utf-8`);
 
-                username: profile.username,
-                email: profile.email,
-                discordID: profile.id,
-                avatar: profile.avatar,
-
-                token: randomizer.string(64)
-            });
-
-            const userConfig = ExampleUserConfig;
-            userConfig.Arguments.key = user.token;
-
-            fs.writeFileSync(`/usr/share/sharex/configs/${user.id}.sxcu`, JSON.stringify(userConfig), `utf-8`);
-
-            void user.save((err) => {
-                if (err != null) return callback(err);
-                else return callback(err, user);
+                void user.save(err => {
+                    if (err != null) return callback(err);
+                    else return callback(err, user);
+                });
             });
         });
-    });
-});
+    }
+);
 
 passport.use(discordStrategy);
 

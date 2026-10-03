@@ -1,20 +1,19 @@
-import { name, version } from '../package.json';
+import * as dotenv from "dotenv";
+import yargs from "yargs";
+import { hideBin } from "yargs/helpers";
 
-import yargs from 'yargs';
-import { hideBin } from 'yargs/helpers';
-
-import * as dotenv from 'dotenv';
+import { name, version } from "../package.json";
 dotenv.config();
 
 interface Args {
-    baseURL: string
-    port: number
+    baseURL: string;
+    port: number;
 }
 
-const argv = (yargs(hideBin(process.argv)).options({
+const argv = yargs(hideBin(process.argv)).options({
     baseURL: { type: `string`, default: `http://localhost:8080/api` },
     port: { type: `number`, default: 8080 }
-}).argv as Args);
+}).argv as Args;
 
 const config = {
     name,

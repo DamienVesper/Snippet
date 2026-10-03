@@ -2,6 +2,9 @@
   "name": "@snippet/api",
   "private": true,
   "type": "module",
+  "imports": {
+    "#/common/*": "../common/src/*"
+  },
   "scripts": {
     "build": "bun build src/index.ts --outdir=build --target bun --production",
     "build:db": "NODE_ENV=\"drizzle\" bun build src/drizzle.config.ts src/models/*.ts --outdir=drizzle --target bun --minify",
@@ -22,8 +25,5 @@
   "devDependencies": {
     "@types/bun": "^1.4.2",
     "drizzle-kit": "^0.31.11"
-  },
-  "imports": {
-    "#/common/*": "../common/src/*"
   }
 }

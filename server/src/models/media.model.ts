@@ -1,14 +1,14 @@
-import Mongoose from 'mongoose';
-import { Snowflake } from '@boatgame-io/id-utils';
+import { Snowflake } from "@boatgame-io/id-utils";
+import Mongoose from "mongoose";
 
 interface MediaDoc extends Mongoose.Document {
-    created: Date
-    id: Snowflake
+    created: Date;
+    id: Snowflake;
 
-    author: Snowflake
+    author: Snowflake;
 
-    name: string
-    extension: string
+    name: string;
+    extension: string;
 }
 
 const MediaSchema = new Mongoose.Schema({
@@ -23,7 +23,4 @@ const MediaSchema = new Mongoose.Schema({
 
 const Media = Mongoose.model<MediaDoc>(`Media`, MediaSchema);
 
-export {
-    Media,
-    MediaDoc
-};
+export { Media, MediaDoc };

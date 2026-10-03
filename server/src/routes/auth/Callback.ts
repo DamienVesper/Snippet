@@ -1,9 +1,8 @@
+import { Router } from "express";
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import config from '../../../config/config';
-
-import { Router } from 'express';
-
-import log from '../../utils/log';
+import config from "../../../config/config";
+import log from "../../utils/log";
 
 const router = Router();
 
@@ -13,12 +12,9 @@ router.get(`/`, (req, res) => {
         return;
     }
 
-    log(`magenta`, `[AUTH]: "${((req.user as any).username as string)}" logged in.`);
+    log(`magenta`, `[AUTH]: "${(req.user as any).username as string}" logged in.`);
 
-    res.redirect(`${req.headers.host.includes(`localhost`)
-        ? `http://localhost:3000`
-        : config.domain
-    }/dashboard`);
+    res.redirect(`${req.headers.host.includes(`localhost`) ? `http://localhost:3000` : config.domain}/dashboard`);
 });
 
 export default router;

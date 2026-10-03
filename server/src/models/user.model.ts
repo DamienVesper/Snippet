@@ -1,19 +1,19 @@
-import Mongoose from 'mongoose';
-import { Snowflake } from '@boatgame-io/id-utils';
+import { Snowflake } from "@boatgame-io/id-utils";
+import Mongoose from "mongoose";
 
 interface UserDoc extends Mongoose.Document {
-    created: Date
-    id: Snowflake
+    created: Date;
+    id: Snowflake;
 
-    banned: boolean
-    rank: `USER` | `VIP` | `ADMIN`
+    banned: boolean;
+    rank: `USER` | `VIP` | `ADMIN`;
 
-    username: string
-    email: string
-    discordID: string
-    avatar?: string
+    username: string;
+    email: string;
+    discordID: string;
+    avatar?: string;
 
-    token: string
+    token: string;
 }
 
 const UserSchema = new Mongoose.Schema({
@@ -33,7 +33,4 @@ const UserSchema = new Mongoose.Schema({
 
 const User = Mongoose.model<UserDoc>(`User`, UserSchema);
 
-export {
-    User,
-    UserDoc
-};
+export { User, UserDoc };
