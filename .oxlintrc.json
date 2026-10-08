@@ -31,6 +31,10 @@
           {
             "pattern": "**/*.svelte",
             "action": "ignore"
+          },
+          {
+            "pattern": "./$types",
+            "action": "ignore"
           }
         ]
       }

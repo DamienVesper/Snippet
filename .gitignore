@@ -1,14 +1,10 @@
 # Build
 .svelte-kit/
 build/
+dist/
 
 # Configuration
 config.hjson
 
 # Dependencies
 node_modules/
-
-# Secrets
-.env
-.env.*
-!.env.example

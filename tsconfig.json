@@ -1,5 +1,8 @@
 {
   "$schema": "https://www.schemastore.org/tsconfig.json",
-  "extends": ["./api/tsconfig.json", "./client/tsconfig.json", "./common/tsconfig.json"],
-  "include": ["./**/*.ts", "./**/*.js"]
+  "extends": ["./tsconfig.base.json", "$app/tsconfig"],
+  "compilerOptions": {
+    "strict": true
+  },
+  "include": ["src", "drizzle.config.ts", "vite.config.ts", "config.d.ts"]
 }

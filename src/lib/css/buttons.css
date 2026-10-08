@@ -1,0 +1,43 @@
+/*
+ * SPDX-FileCopyrightText: 2026 Damien Vesper <ldamienvesper@gmail.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+
+@layer base {
+    .btn-darken {
+        border: none;
+    }
+
+    .btn-darken:hover:not(.active),
+    .btn-darken:active:not(.active) {
+        color: inherit;
+
+        filter: brightness(80%);
+        transition: all 0.25s ease;
+    }
+
+    .btn-social {
+        display: inline-block;
+
+        height: 45px;
+        width: 45px;
+
+        margin: 4px 0px;
+
+        font-size: large;
+        text-align: center;
+
+        border: none;
+        border-radius: 12px;
+
+        background-size: 65%;
+        background-position: center;
+        background-repeat: no-repeat;
+        text-align: center;
+    }
+
+    .btn-discord {
+        background-image: url("#lib/img/icons/discord.svg");
+        background-color: var(--color-discord) !important;
+    }
+}
