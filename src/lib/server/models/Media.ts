@@ -7,7 +7,7 @@ import { User } from "./User.ts";
 
 import type { InferSelectModel } from "drizzle-orm";
 
-export const Media = pgTable("session", t => ({
+export const Media = pgTable("media", t => ({
     id: t.serial().primaryKey(),
     filename: t.text().notNull().unique(),
     size: t.integer().notNull(),
