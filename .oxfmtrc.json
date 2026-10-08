@@ -35,6 +35,7 @@
   "sortTailwindcss": {
     "stylesheet": "./src/lib/css/index.css"
   },
+  "svelte": true,
   "tabWidth": 4,
   "trailingComma": "none"
 }

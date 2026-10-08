@@ -7,16 +7,16 @@ SPDX-License-Identifier: AGPL-3.0-only
     import Discord from "#lib/img/icons/discord.svg";
 </script>
 
-<main class="py-32 font-sans text-primary text-center">
-    <h1 class="text-5xl font-bold pt-4">Snippet</h1>
-    <p class="text-lg text-secondary my-6">
+<main class="py-32 text-center font-sans text-primary">
+    <h1 class="pt-4 text-5xl font-bold">Snippet</h1>
+    <p class="my-6 text-lg text-secondary">
         Private hosting for screenshots, video, audio, and files from ShareX.
-        <br>
+        <br />
         Sign in with Discord to access your gallery and upload endpoint.
     </p>
 
     <a
-        class="btn-darken btn-discord flex justify-center items-center gap-2 bg-discord px-4.5 py-2.5 rounded-lg cursor-pointer mx-auto mt-8 w-fit"
+        class="btn-darken btn-discord mx-auto mt-8 flex w-fit cursor-pointer items-center justify-center gap-2 rounded-lg bg-discord px-4.5 py-2.5"
         href="/auth/login"
     >
         <img src={Discord} alt="Discord logo" class="h-6" />

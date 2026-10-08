@@ -5,7 +5,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts"></script>
 
-<header class="bg-header-bg sticky py-3 border border-b-border top-0 z-100">
+<header class="sticky top-0 z-100 border border-b-border bg-header-bg py-3">
     <div class="container mx-auto text-primary">
         <nav class="flex gap-2">
             <a href="/" class="text-xl font-bold">Snippet</a>

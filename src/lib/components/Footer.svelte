@@ -8,6 +8,6 @@ SPDX-License-Identifier: AGPL-3.0-only
 </script>
 
 <footer class="w-full">
-    <hr class="text-border my-4">
-    <p class="text-secondary text-sm text-center">Snippet v{APP_VERSION} &ndash; Private file sharing.</p>
+    <hr class="my-4 text-border" />
+    <p class="text-center text-sm text-secondary">Snippet v{APP_VERSION} &ndash; Private file sharing.</p>
 </footer>
