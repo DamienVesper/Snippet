@@ -44,11 +44,17 @@ SPDX-License-Identifier: AGPL-3.0-only
             class="mb-6 flex flex-wrap items-center gap-4 rounded-xl border border-dashed border-border bg-card px-5 py-4"
         >
             <h2 class="w-full text-lg font-bold">Upload File</h2>
-            <form action="/api/upload" method="POST" class="flex w-full gap-3" use:enhance>
+            <form
+                action="/api/upload"
+                method="POST"
+                class="flex w-full gap-3"
+                enctype="multipart/form-data"
+                use:enhance
+            >
                 <input
                     type="file"
-                    name="dashboard-media-upload"
-                    id="dashboard-media-upload"
+                    name="file"
+                    id="file"
                     class="min-w-50 flex-1 rounded-lg border border-border bg-background p-[0.4rem] text-sm text-secondary"
                 />
                 <button
