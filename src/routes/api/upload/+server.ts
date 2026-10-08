@@ -43,6 +43,7 @@ export const POST: RequestHandler = async ({ request, url }) => {
         await fs.writeFile(path.join(MEDIA_DIR, filename), file.stream());
         await db.insert(Media).values({
             filename,
+            name: file.name,
             size: file.size,
             userId: dbUser.id
         });

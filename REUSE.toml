@@ -5,10 +5,12 @@ path = [
     ".github/**",
     ".gitattributes",
     "**/.gitignore",
-    "**/*.example",
+    "**/*.conf",
     "**/*.html",
     "**/*.json",
     "**/*.lock",
+    "**/*.md",
+    "**/*.svg",
     "**/*.yaml"
 ]
 precedence = "override"

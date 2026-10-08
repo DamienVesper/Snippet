@@ -3,6 +3,8 @@
 
 const encoder = new TextEncoder();
 
+const BYTE_SIZES = ["B", "KiB", "MiB", "GiB"];
+
 export const helpers = {
     /**
      * Safely fetch a URL without having to handle errors.
@@ -34,6 +36,21 @@ export const helpers = {
             };
         }
     },
+    /**
+     * Formats an integer representation of bytes to human-readable units.
+     * @param bytes The number to format.
+     * @param fixed The number of digits beyond the decimal point to keep.
+     */
+    formatBytes(bytes: number, fixed = 2): string {
+        if (bytes === 0) return "0 B";
+
+        const exp = Math.floor(Math.log(bytes) / Math.log(1024));
+        return `${parseFloat((bytes / Math.pow(1024, exp)).toFixed(fixed))} ${BYTE_SIZES[exp]}`;
+    },
+    /**
+     * Hash a string.
+     * @param str The string to hash.
+     */
     async hashString(str: string): Promise<string> {
         // TODO: Uint8Array#toHex is very new. Maybe this should be polyfilled?
         return new Uint8Array(await crypto.subtle.digest("SHA-256", encoder.encode(str))).toHex();

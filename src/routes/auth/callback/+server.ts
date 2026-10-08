@@ -54,7 +54,7 @@ export const GET: RequestHandler = async ({ url, cookies }) => {
             apiKey: generateToken()
         })
         .onConflictDoUpdate({
-            target: User.id,
+            target: User.discordId,
             set: {
                 username: userRes.data.username,
                 avatar: userRes.data.avatar

@@ -4,6 +4,8 @@ SPDX-License-Identifier: AGPL-3.0-only
 -->
 
 <script lang="ts">
+    import { enhance } from "$app/forms";
+
     const { authenticated }: { authenticated: boolean } = $props();
 </script>
 
@@ -31,12 +33,15 @@ SPDX-License-Identifier: AGPL-3.0-only
                 >
                     Admin
                 </a>
-                <a
-                    href="/logout"
-                    class="rounded-lg border border-border bg-background-hover px-3 py-[0.45rem] text-sm font-semibold hover:bg-border"
-                >
-                    Logout
-                </a>
+
+                <form action="/auth/logout" method="POST" use:enhance>
+                    <button
+                        type="submit"
+                        class="rounded-lg border border-border bg-background-hover px-3 py-[0.45rem] text-sm font-semibold hover:bg-border"
+                    >
+                        Logout
+                    </button>
+                </form>
             {/if}
         </nav>
     </div>
@@ -47,7 +52,8 @@ SPDX-License-Identifier: AGPL-3.0-only
         backdrop-filter: blur(0.5rem);
     }
 
-    a:not(:first-child):hover {
+    a:not(:first-child):hover,
+    form button:hover {
         transform: translateY(-0.0625rem);
         transition:
             background 0.15s,

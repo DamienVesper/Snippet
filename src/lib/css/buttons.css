@@ -4,6 +4,13 @@
  */
 
 @layer base {
+    .btn {
+        transform: translateY(-0.0625rem);
+        transition:
+            background 0.15s,
+            transform 0.1s;
+    }
+
     .btn-darken {
         border: none;
     }
@@ -19,16 +26,16 @@
     .btn-social {
         display: inline-block;
 
-        height: 45px;
-        width: 45px;
+        height: 2.8125rem;
+        width: 2.8125rem;
 
-        margin: 4px 0px;
+        margin: 0.25rem 0rem;
 
         font-size: large;
         text-align: center;
 
         border: none;
-        border-radius: 12px;
+        border-radius: 0.75rem;
 
         background-size: 65%;
         background-position: center;

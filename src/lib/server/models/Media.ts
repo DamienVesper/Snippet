@@ -10,6 +10,7 @@ import type { InferSelectModel } from "drizzle-orm";
 export const Media = pgTable("media", t => ({
     id: t.serial().primaryKey(),
     filename: t.text().notNull().unique(),
+    name: t.text().notNull(),
     size: t.integer().notNull(),
 
     userId: t
