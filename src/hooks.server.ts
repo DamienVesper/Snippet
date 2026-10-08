@@ -19,7 +19,7 @@ export const handle: Handle = async ({ event, resolve }) => {
             throw redirect(302, "/");
         }
 
-        return resolve(event);
+        return await resolve(event);
     }
 
     const { session, user } = await validateSession(sessionToken);
@@ -46,5 +46,5 @@ export const handle: Handle = async ({ event, resolve }) => {
         }
     }
 
-    return resolve(event);
+    return await resolve(event);
 };
