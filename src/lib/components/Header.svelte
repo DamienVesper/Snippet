@@ -14,10 +14,10 @@ SPDX-License-Identifier: AGPL-3.0-only
             <div class="flex-1"></div>
             {#if authenticated}
                 <a
-                    href="/gallery"
+                    href="/dashboard"
                     class="rounded-lg border border-border bg-background-hover px-3 py-[0.45rem] text-sm font-semibold hover:bg-border"
                 >
-                    Gallery
+                    Dashboard
                 </a>
                 <a
                     href="/settings"

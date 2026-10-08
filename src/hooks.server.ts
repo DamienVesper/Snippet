@@ -6,7 +6,7 @@ import { type Handle } from "@sveltejs/kit/hooks";
 
 import { validateSession } from "#lib/server/auth.ts";
 
-const hiddenPaths = ["/admin", "/gallery", "/settings"];
+const hiddenPaths = ["/admin", "/dashboard", "/settings"];
 
 export const handle: Handle = async ({ event, resolve }) => {
     const sessionToken = event.cookies.get("session");
