@@ -103,6 +103,12 @@ export interface Config {
             redirectURI: string;
         };
     };
+    media: {
+        /**
+         * Where media is stored on your physical server.
+         */
+        storageDir: string;
+    };
     /**
      * Secrets
      */

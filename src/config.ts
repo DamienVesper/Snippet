@@ -41,6 +41,9 @@ export function getConfig(isProd: boolean, dir: string): Config {
                 redirectURI: ""
             }
         },
+        media: {
+            storageDir: "/var/www/example.domain.tld/i"
+        },
         secrets: {}
     };
 

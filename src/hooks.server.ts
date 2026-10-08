@@ -6,7 +6,7 @@ import { type Handle } from "@sveltejs/kit/hooks";
 
 import { validateSession } from "#lib/server/auth.ts";
 
-const hiddenPaths = ["/admin", "/dashboard", "/settings"];
+const hiddenPaths = ["/admin", "/gallery", "/settings"];
 
 export const handle: Handle = async ({ event, resolve }) => {
     const sessionToken = event.cookies.get("session");
@@ -15,8 +15,8 @@ export const handle: Handle = async ({ event, resolve }) => {
         event.locals.user = null;
         event.locals.session = null;
 
-        if (event.url.pathname.startsWith("/dashboard")) {
-            throw redirect(302, "/");
+        for (let i = 0; i < hiddenPaths.length; ++i) {
+            if (event.url.pathname.startsWith(hiddenPaths[i])) throw redirect(302, "/");
         }
 
         return await resolve(event);

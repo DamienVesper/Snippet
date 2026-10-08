@@ -6,8 +6,9 @@
   "RequestMethod": "POST",
   "RequestURL": "https://example.domain.tld/api/upload",
   "Body": "MultipartFormData",
-  "Arguments": {
-    "Authorization": "Bearer apikey"
+  "Headers": {
+    "Authorization": "Bearer {{API_KEY}}"
   },
-  "FileFormName": "fdata"
+  "FileFormName": "file",
+  "URL": "{json:url"
 }

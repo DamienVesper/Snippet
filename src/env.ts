@@ -39,5 +39,10 @@ export const variables = defineEnvVars({
                 `postgresql://${config.database.user}:${config.database.password}@${config.database.host}:${config.database.port}/${config.database.database}`
             ),
         static: true
+    },
+    MEDIA_DIR: {
+        description: "The location where media files are stored.",
+        schema: z.string().nonoptional().default(config.media.storageDir),
+        static: true
     }
 });

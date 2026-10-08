@@ -17,8 +17,8 @@ export const User = pgTable("user", t => ({
 
     apiKey: t.varchar({ length: 64 }).unique().notNull(),
 
-    createdAt: t.timestamp({ withTimezone: true }).defaultNow(),
-    lastLoginAt: t.timestamp({ withTimezone: true }).defaultNow(),
+    createdAt: t.timestamp({ withTimezone: true }).notNull().defaultNow(),
+    lastLoginAt: t.timestamp({ withTimezone: true }).notNull().defaultNow(),
 
     role: roles().notNull().default(Role.Member),
     status: status().notNull().default(Status.Unverified)
