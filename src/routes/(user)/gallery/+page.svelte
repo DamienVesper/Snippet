@@ -4,9 +4,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 -->
 
 <script lang="ts">
-    import type { PageData } from "./$types";
-
-    const { data }: { data: PageData } = $props();
+    const { data } = $props();
 </script>
 
 <main class="text-primary">

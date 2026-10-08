@@ -25,7 +25,7 @@ export const POST: RequestHandler = async ({ request, url }) => {
         const res = await db.select({ id: User.id }).from(User).where(eq(User.apiKey, authKey));
         if (res.length === 0) throw error(401, "Authorization incorrect.");
 
-        const user = res[0];
+        const dbUser = res[0];
 
         const formData = await request.formData();
         const file = formData.get("file") as File | null;
@@ -44,7 +44,7 @@ export const POST: RequestHandler = async ({ request, url }) => {
         await db.insert(Media).values({
             filename,
             size: file.size,
-            userId: user.id
+            userId: dbUser.id
         });
 
         return Response.json({

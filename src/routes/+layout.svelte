@@ -11,13 +11,13 @@ SPDX-License-Identifier: AGPL-3.0-only
 
     // import favicon from "#lib/img/favicon.svg";
 
-    const { children } = $props();
+    const { children, data } = $props();
 </script>
 
 <!-- <svelte:head>
 	<link rel="icon" href={favicon} />
 </svelte:head> -->
 
-<Header />
+<Header authenticated={data.authenticated} />
 {@render children()}
 <Footer />
