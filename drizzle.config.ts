@@ -3,7 +3,7 @@ import { defineConfig } from "drizzle-kit";
 import { getConfig } from "./src/config.ts";
 
 const isProd = process.env.NODE_ENV === "production";
-const config = getConfig(isProd, "./");
+const config = getConfig(isProd, "../");
 
 export default defineConfig({
     out: "./dist",
