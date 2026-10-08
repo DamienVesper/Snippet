@@ -28,14 +28,7 @@ export default defineConfig(({ mode }) => {
     const serverOptions: ServerOptions = {
         port: 3000,
         strictPort: true,
-        host: "127.0.0.1",
-        proxy: {
-            "/api": {
-                target: "http://127.0.0.1:8080",
-                changeOrigin: true,
-                secure: false
-            }
-        }
+        host: "127.0.0.1"
     };
 
     if (!isDev) plugins.push(ViteImageOptimizer({ logStats: true }));
@@ -48,6 +41,8 @@ export default defineConfig(({ mode }) => {
                 }
             }
         },
+        // TODO: Figure out why this doesn't work as intended.
+        clearScreen: false,
         css: {
             devSourcemap: isDev,
             transformer: "lightningcss"
