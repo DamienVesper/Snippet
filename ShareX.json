@@ -10,5 +10,5 @@
     "Authorization": "Bearer {{API_KEY}}"
   },
   "FileFormName": "file",
-  "URL": "{json:url"
+  "URL": "{json:url}"
 }
