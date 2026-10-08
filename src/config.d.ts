@@ -21,7 +21,7 @@ export interface Config {
     };
 
     /**
-     * Logging configurations.
+     * Logging configuration.
      */
     logging: {
         /**

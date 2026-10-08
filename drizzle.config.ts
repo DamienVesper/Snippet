@@ -7,7 +7,7 @@ const config = getConfig(isProd, "./");
 
 export default defineConfig({
     out: "./dist",
-    schema: "./dist/src/lib/server/models",
+    schema: "./src/lib/server/models",
     dialect: "postgresql",
     dbCredentials: {
         url: `postgresql://${config.database.user}:${config.database.password}@${config.database.host}:${config.database.port}/${config.database.database}`

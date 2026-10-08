@@ -11,8 +11,12 @@
   },
   "scripts": {
     "build": "bun --bun vite build",
+    "build:db": "bun build drizzle.config.ts src/lib/server/models/*.ts --outdir=dist --entry-naming='[name].[ext]' --target bun --minify",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --tsgo",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --tsgo --watch",
+    "db:check": "bunx --bun drizzle-kit check",
+    "db:generate": "bunx --bun drizzle-kit generate --config dist/drizzle.config.js",
+    "db:push": "bunx --bun drizzle-kit push --config dist/drizzle.config.js",
     "dev": "bun --bun vite",
     "fmt": "bun --bun oxfmt",
     "fmt:ci": "oxfmt --check",
@@ -25,7 +29,7 @@
   },
   "dependencies": {
     "@lucide/svelte": "^1.53.0",
-    "drizzle-orm": "1.0.0-rc.4",
+    "drizzle-orm": "^1.0.0-rc.5-ab785fc",
     "hjson": "^3.2.2",
     "pg": "^8.23.1",
     "zod": "^4.6.5"
@@ -40,7 +44,7 @@
     "@types/pg": "^8.23.1",
     "@typescript/native": "npm:typescript@7",
     "discord-api-types": "^0.38.56",
-    "drizzle-kit": "^1.0.0-rc.4",
+    "drizzle-kit": "^1.0.0-rc.5-ab785fc",
     "oxfmt": "^0.71.0",
     "oxlint": "^1.87.0",
     "sharp": "^0.34.5",

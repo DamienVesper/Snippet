@@ -16,5 +16,5 @@ export enum Status {
     Banned = "banned"
 }
 
-export const roles = pgEnum("roles", Role);
-export const status = pgEnum("roles", Status);
+export const roles = pgEnum("user_roles", Role);
+export const status = pgEnum("user_status", Status);
