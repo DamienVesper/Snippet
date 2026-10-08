@@ -8,3 +8,6 @@ config.hjson
 
 # Dependencies
 node_modules/
+
+# Development stuff
+static/i/
