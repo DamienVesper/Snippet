@@ -21,15 +21,19 @@ SPDX-License-Identifier: AGPL-3.0-only
                 >
                     Dashboard
                 </a>
+                <!-- svelte-ignore a11y_invalid_attribute -->
                 <a
-                    href="/settings"
-                    class="rounded-lg border border-border bg-background-hover px-3 py-[0.45rem] text-sm font-semibold hover:bg-border"
+                    href=""
+                    class="cursor-not-allowed rounded-lg border border-border bg-background-hover! px-3 py-[0.45rem] text-sm font-semibold opacity-50 hover:bg-border"
+                    aria-disabled="true"
                 >
                     Settings
                 </a>
+                <!-- svelte-ignore a11y_invalid_attribute -->
                 <a
-                    href="/admin"
-                    class="rounded-lg border border-border bg-background-hover px-3 py-[0.45rem] text-sm font-semibold hover:bg-border"
+                    href=""
+                    class="cursor-not-allowed rounded-lg border border-border bg-background-hover! px-3 py-[0.45rem] text-sm font-semibold opacity-50 hover:bg-border"
+                    aria-disabled="true"
                 >
                     Admin
                 </a>
@@ -52,7 +56,7 @@ SPDX-License-Identifier: AGPL-3.0-only
         backdrop-filter: blur(0.5rem);
     }
 
-    a:not(:first-child):hover,
+    a:not([aria-disabled="true"]):not(:first-child):hover,
     form button:hover {
         transform: translateY(-0.0625rem);
         transition:
