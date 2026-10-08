@@ -10,21 +10,21 @@
     "#lib/*": "./src/lib/*"
   },
   "scripts": {
-    "build": "bun --bun vite build",
+    "build": "bunx --bun vite build",
     "build:db": "bun build drizzle.config.ts src/lib/server/models/*.ts --outdir=dist --entry-naming='[name].[ext]' --target bun --minify",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --tsgo",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --tsgo --watch",
-    "db:check": "bunx --bun drizzle-kit check",
-    "db:generate": "bunx --bun drizzle-kit generate --config dist/drizzle.config.js",
-    "db:push": "bunx --bun drizzle-kit push --config dist/drizzle.config.js",
-    "dev": "bun --bun vite",
-    "fmt": "bun --bun oxfmt",
+    "db:check": "drizzle-kit check",
+    "db:generate": "drizzle-kit generate --config dist/drizzle.config.js",
+    "db:push": "drizzle-kit push --config dist/drizzle.config.js",
+    "dev": "bunx --bun vite",
+    "fmt": "oxfmt",
     "fmt:ci": "oxfmt --check",
     "lint": "oxlint",
     "lint:ci": "oxlint --format=github",
     "lint:fix": "oxlint --fix",
     "prepare": "svelte-kit sync || echo ''",
-    "preview": "bun --bun vite preview",
+    "preview": "bunx --bun vite preview",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
