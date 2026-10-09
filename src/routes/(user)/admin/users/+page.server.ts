@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 
 import { fail } from "@sveltejs/kit";
-import { count, eq } from "drizzle-orm";
+import { asc, count, eq } from "drizzle-orm";
 
 import { db } from "#lib/server/db.ts";
 import { Media } from "#lib/server/models/Media.ts";
@@ -25,7 +25,8 @@ export const load: PageServerLoad = async () => {
         })
         .from(User)
         .leftJoin(Media, eq(User.id, Media.userId))
-        .groupBy(User.id);
+        .groupBy(User.id)
+        .orderBy(asc(User.id));
 
     return { users };
 };
