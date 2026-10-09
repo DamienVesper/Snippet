@@ -53,7 +53,7 @@ SPDX-License-Identifier: AGPL-3.0-only
                                 <img
                                     src="https://cdn.discordapp.com/avatars/{user.discordId}/{user.avatar}.webp"
                                     alt=""
-                                    class="w-7 h-7 rounded-full"
+                                    class="h-7 w-7 rounded-full"
                                 />
                                 <span>{user.username}</span>
                             </div>
