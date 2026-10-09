@@ -39,7 +39,7 @@ async function saveFile(userId: UserType["id"], request: Request): Promise<strin
         await fs.writeFile(path.join(MEDIA_PUBLIC_DIR, filename), file.stream());
     } else {
         const today = new Date();
-        const storageDir = `${MEDIA_STORAGE_DIR}/${today.getUTCFullYear()}/${today.getUTCMonth()}/${today.getUTCDate()}`;
+        const storageDir = `${MEDIA_STORAGE_DIR}/${today.getUTCFullYear()}/${today.getUTCMonth() + 1}/${today.getUTCDate()}`;
         const filePath = path.join(storageDir, file.name);
 
         // TODO: Check if this is slow.
