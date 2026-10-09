@@ -40,7 +40,7 @@ async function saveFile(userId: UserType["id"], request: Request): Promise<strin
     } else {
         const today = new Date();
         const storageDir = `${MEDIA_STORAGE_DIR}/${today.getUTCFullYear()}/${today.getUTCMonth() + 1}/${today.getUTCDate()}`;
-        const filePath = path.join(storageDir, file.name);
+        const filePath = path.join(storageDir, filename);
 
         // TODO: Check if this is slow.
         await fs.mkdir(storageDir, { recursive: true });
