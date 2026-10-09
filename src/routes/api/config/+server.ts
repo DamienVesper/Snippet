@@ -15,7 +15,8 @@ export const GET: RequestHandler = async ({ locals }) => {
             ...ShareXConfig,
             RequestURL: `${config.media.origin}/api/upload`,
             Headers: {
-                Authorization: `Bearer ${locals.user.apiKey}`
+                Authorization: `Bearer ${locals.user.apiKey}`,
+                Origin: config.media.origin
             }
         },
         {
