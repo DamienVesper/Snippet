@@ -8,6 +8,8 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, type PluginOption, type ServerOptions } from "vite";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 
+import { config } from "./src/config.ts";
+
 export default defineConfig(({ mode }) => {
     const isDev = mode === "development";
 
@@ -20,6 +22,9 @@ export default defineConfig(({ mode }) => {
             compilerOptions: {
                 // Force runes mode for the project, except for libraries. Can be removed in svelte 6.
                 runes: ({ filename }) => (filename.split(/[/\\]/).includes("node_modules") ? undefined : true)
+            },
+            csrf: {
+                trustedOrigins: [config.media.origin]
             },
             preprocess: vitePreprocess()
         })
