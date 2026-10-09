@@ -1,0 +1,13 @@
+[Unit]
+Description=Snippet
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/Snippet
+Environment="BODY_SIZE_LIMIT=Infinity"
+Environment="PORT=1234"
+ExecStart=/usr/bin/node build/index.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
