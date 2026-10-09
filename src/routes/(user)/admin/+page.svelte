@@ -10,7 +10,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 <article class="grid gap-4 xl:grid-cols-2">
     <div class="rounded-lg border border-border bg-card p-5 lg:col-span-2">
         <h1 class="text-2xl font-bold">Welcome, {data.username}!</h1>
-        <p class="text-sm mt-2 text-secondary">Manage users and media, or view logs here.</p>
+        <p class="mt-2 text-sm text-secondary">Manage users and media, or view logs here.</p>
     </div>
     <div class="flex flex-col items-center justify-center gap-2 rounded-lg border border-border bg-card p-5">
         <span class="text-4xl font-bold text-accent">{data.stats.users}</span>
