@@ -23,7 +23,13 @@ SPDX-License-Identifier: AGPL-3.0-only
         target="_blank"
         class="relative flex aspect-video flex-col items-center justify-center gap-[0.35rem] overflow-hidden bg-background-hover"
     >
-        <img src="/i/{media.filename}" alt="" loading="lazy" class="h-full w-full max-w-full" />
+        <!-- TODO: Find better way to determine video vs. img vs. document files. -->
+        {#if media.filename.endsWith(".mp4") || media.filename.endsWith(".mov") || media.filename.endsWith(".mkv") || media.filename.endsWith(".webm")}
+            <!-- svelte-ignore a11y_media_has_caption -->
+            <video src="/i/{media.filename}" preload="metadata" class="h-full w-full max-w-full"></video>
+        {:else}
+            <img src="/i/{media.filename}" alt="" loading="lazy" class="h-full w-full max-w-full" />
+        {/if}
     </a>
     <div class="px-4 py-[0.85rem]">
         <span class="mb-[0.35rem] overflow-hidden text-sm font-semibold text-ellipsis" title={media.name}>
