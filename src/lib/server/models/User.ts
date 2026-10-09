@@ -3,7 +3,9 @@
 
 import { pgTable } from "drizzle-orm/pg-core";
 
-import { Role, roles, Status, status } from "./_constants.ts";
+import { Role, Status } from "#lib/types/enums.ts";
+
+import { roles, status } from "./_constants.ts";
 
 import type { InferSelectModel } from "drizzle-orm";
 

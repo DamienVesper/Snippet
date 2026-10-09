@@ -6,7 +6,9 @@ SPDX-License-Identifier: AGPL-3.0-only
 <script lang="ts">
     import { enhance } from "$app/forms";
 
-    const { authenticated }: { authenticated: boolean } = $props();
+    import { Role } from "#lib/types/enums.ts";
+
+    const { authenticated, role }: { authenticated: boolean; role: Role } = $props();
 </script>
 
 <header class="sticky top-0 z-100 border border-b-border bg-header-bg py-3">
@@ -21,12 +23,14 @@ SPDX-License-Identifier: AGPL-3.0-only
                 >
                     Dashboard
                 </a>
-                <a
-                    href="/admin"
-                    class="rounded-lg border border-border bg-background-hover px-3 py-[0.45rem] hover:bg-border"
-                >
-                    Admin
-                </a>
+                {#if role === Role.Admin}
+                    <a
+                        href="/admin"
+                        class="rounded-lg border border-border bg-background-hover px-3 py-[0.45rem] hover:bg-border"
+                    >
+                        Admin
+                    </a>
+                {/if}
                 <a
                     href="/settings"
                     class="rounded-lg border border-border bg-background-hover px-3 py-[0.45rem] hover:bg-border"

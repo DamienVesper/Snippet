@@ -3,18 +3,7 @@
 
 import { pgEnum } from "drizzle-orm/pg-core";
 
-export enum Role {
-    Admin = "admin",
-    Moderator = "mod",
-    Member = "member"
-}
-
-export enum Status {
-    Verified = "verified",
-    Unverified = "unverified",
-    Suspended = "suspended",
-    Banned = "banned"
-}
+import { Role, Status } from "#lib/types/enums.ts";
 
 export const roles = pgEnum("user_roles", Role);
 export const status = pgEnum("user_status", Status);
