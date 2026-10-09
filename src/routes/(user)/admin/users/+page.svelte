@@ -7,6 +7,7 @@ SPDX-License-Identifier: AGPL-3.0-only
     import { enhance } from "$app/forms";
     import BadgeCheck from "@lucide/svelte/icons/badge-check";
     import Pause from "@lucide/svelte/icons/pause";
+    import Play from "@lucide/svelte/icons/play";
     import Trash from "@lucide/svelte/icons/trash";
 
     import { Status } from "#lib/types/enums.ts";
@@ -52,7 +53,7 @@ SPDX-License-Identifier: AGPL-3.0-only
                                 <img
                                     src="https://cdn.discordapp.com/avatars/{user.discordId}/{user.avatar}.webp"
                                     alt=""
-                                    class="h-7 w-7 rounded-full"
+                                    class="w-7 h-7 rounded-full"
                                 />
                                 <span>{user.username}</span>
                             </div>
@@ -84,35 +85,52 @@ SPDX-License-Identifier: AGPL-3.0-only
                         <td>{dateFormatter.format(user.lastLoginAt)}</td>
                         <td>{numFormatter.format(user.uploads)}</td>
                         <td class="text-center">
-                            {#if user.discordId === data.discordId}
+                            {#if user.discordId !== data.discordId}
                                 <span class="text-secondary">You</span>
                             {:else}
                                 <div class="flex justify-center gap-1">
-                                    {#if user.status === Status.Verified}
-                                        <form
-                                            action="?/suspend"
-                                            method="POST"
-                                            enctype="multipart/form-data"
-                                            use:enhance
-                                        >
-                                            <input type="hidden" name="target" value={user.discordId} />
-                                            <button
-                                                type="submit"
-                                                class="btn-darken rounded-sm bg-warning-bg px-2 py-1 text-xs font-semibold text-warning"
-                                            >
-                                                <Pause />
-                                            </button>
-                                        </form>
-                                    {:else}
+                                    {#if user.status === Status.Unverified}
                                         <form action="?/verify" method="POST" enctype="multipart/form-data" use:enhance>
                                             <input type="hidden" name="target" value={user.discordId} />
                                             <button
                                                 type="submit"
                                                 class="btn-darken rounded-sm bg-info-bg px-2 py-1 text-xs font-semibold text-info"
                                             >
-                                                <BadgeCheck />
+                                                <BadgeCheck size={20} />
                                             </button>
                                         </form>
+                                    {:else}
+                                        {#if user.status !== Status.Suspended}
+                                            <form
+                                                action="?/suspend"
+                                                method="POST"
+                                                enctype="multipart/form-data"
+                                                use:enhance
+                                            >
+                                                <input type="hidden" name="target" value={user.discordId} />
+                                                <button
+                                                    type="submit"
+                                                    class="btn-darken rounded-sm bg-warning-bg px-2 py-1 text-xs font-semibold text-warning"
+                                                >
+                                                    <Pause size={20} />
+                                                </button>
+                                            </form>
+                                        {:else}
+                                            <form
+                                                action="?/verify"
+                                                method="POST"
+                                                enctype="multipart/form-data"
+                                                use:enhance
+                                            >
+                                                <input type="hidden" name="target" value={user.discordId} />
+                                                <button
+                                                    type="submit"
+                                                    class="btn-darken rounded-sm bg-warning-bg px-2 py-1 text-xs font-semibold text-warning"
+                                                >
+                                                    <Play size={20} />
+                                                </button>
+                                            </form>
+                                        {/if}
                                     {/if}
                                     <form action="?/delete" method="POST" enctype="multipart/form-data" use:enhance>
                                         <input type="hidden" name="target" value={user.discordId} />
@@ -120,7 +138,7 @@ SPDX-License-Identifier: AGPL-3.0-only
                                             type="submit"
                                             class="btn-darken rounded-sm bg-danger-bg px-2 py-1 text-xs font-semibold text-danger"
                                         >
-                                            <Trash />
+                                            <Trash size={20} />
                                         </button>
                                     </form>
                                 </div>

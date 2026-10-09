@@ -72,7 +72,7 @@ SPDX-License-Identifier: AGPL-3.0-only
             <h2 class="w-full text-lg font-bold">Your Uploads</h2>
             <div class="mt-4 mb-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
                 {#each data.uploads as media, i (i)}
-                    <UploadCard {media} {formatter} />
+                    <UploadCard adminView={false} {media} {formatter} />
                 {/each}
             </div>
         </section>
