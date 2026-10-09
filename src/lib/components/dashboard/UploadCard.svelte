@@ -45,10 +45,9 @@ SPDX-License-Identifier: AGPL-3.0-only
         {/if}
     </a>
     <div class="px-4 py-[0.85rem]">
-        <span class="mb-[0.35rem] overflow-hidden text-sm font-semibold text-ellipsis" title={media.name}>
+        <p class="overflow-hidden text-sm font-semibold text-nowrap text-ellipsis" title={media.name}>
             {media.name}
-        </span>
-        <br />
+        </p>
         <span class="text-xs text-secondary">
             {formatter.format(media.createdAt)} &middot; {helpers.formatBytes(media.size)}
         </span>
