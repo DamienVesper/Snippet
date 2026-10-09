@@ -4,7 +4,7 @@
   "Name": "Snippet",
   "DestinationType": "ImageUploader, TextUploader, FileUploader",
   "RequestMethod": "POST",
-  "RequestURL": "https://example.domain.tld/api/upload",
+  "RequestURL": "{{ORIGIN}}/api/upload",
   "Body": "MultipartFormData",
   "Headers": {
     "Authorization": "Bearer {{API_KEY}}"

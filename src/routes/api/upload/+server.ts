@@ -50,7 +50,7 @@ export const POST: RequestHandler = async ({ locals, request, url }) => {
         if (locals.user) {
             return Response.json({
                 status: 200,
-                url: `${url.origin}/i/${saveFile(locals.user.id, request)}`
+                url: `${url.origin}/i/${await saveFile(locals.user.id, request)}`
             });
         }
 
@@ -64,7 +64,7 @@ export const POST: RequestHandler = async ({ locals, request, url }) => {
 
         return Response.json({
             status: 200,
-            url: `${url.origin}/i/${saveFile(res[0].id, request)}`
+            url: `${url.origin}/i/${await saveFile(res[0].id, request)}`
         });
     } catch (err) {
         // TODO: Use the logger for this.

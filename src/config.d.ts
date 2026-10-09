@@ -105,6 +105,11 @@ export interface Config {
     };
     media: {
         /**
+         * The origin of this site.
+         * @example `https://example.domain.tld`
+         */
+        origin: string;
+        /**
          * Where media is stored on your physical server.
          */
         storageDir: string;

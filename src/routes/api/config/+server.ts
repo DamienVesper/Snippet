@@ -4,6 +4,7 @@
 import { error } from "@sveltejs/kit";
 
 import ShareXConfig from "../../../../ShareX.json" with { type: "json" };
+import { config } from "../../../config.ts";
 
 import type { RequestHandler } from "./$types";
 
@@ -12,6 +13,7 @@ export const GET: RequestHandler = async ({ locals }) => {
     return Response.json(
         {
             ...ShareXConfig,
+            RequestURL: `${config.media.origin}/api/upload`,
             Headers: {
                 Authorization: `Bearer ${locals.user.apiKey}`
             }
