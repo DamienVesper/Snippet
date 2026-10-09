@@ -5,7 +5,7 @@
     "": {
       "name": "snippet",
       "dependencies": {
-        "@lucide/svelte": "^1.53.0",
+        "@lucide/svelte": "^1.54.0",
         "drizzle-orm": "^1.0.0-rc.5-ab785fc",
         "hjson": "^3.2.2",
         "pg": "^8.23.1",
@@ -159,7 +159,7 @@
 
     "@js-temporal/polyfill": ["@js-temporal/polyfill@0.5.1", "", { "dependencies": { "jsbi": "^4.3.0" } }, "sha512-hloP58zRVCRSpgDxmqCWJNlizAlUgJFqG2ypq79DCvyv9tHjRYMDOcPFjzfl/A1/YxDvRCZz8wvZvmapQnKwFQ=="],
 
-    "@lucide/svelte": ["@lucide/svelte@1.53.0", "", { "peerDependencies": { "svelte": "^5" } }, "sha512-RZTHcLAwwjAz+rO1S4IPQSTzDycGZWhSYa0GS3sXAoJ3GTHdBZyHCXutIxJketIAoaIkcmFK5Ucfo2+WBYpKLA=="],
+    "@lucide/svelte": ["@lucide/svelte@1.54.0", "", { "peerDependencies": { "svelte": "^5" } }, "sha512-PbUrcmVPU71zmcs1Kc5RlgF83SsBsSNC+MeuttAHMmvPMuoIJfyDPjit5kpAJxJwsmN2Pk1Bx75AwZxP8vkDvw=="],
 
     "@oxc-project/types": ["@oxc-project/types@0.153.0", "", {}, "sha512-jSNrRIyvPVLL5E1z/tS5zLAprosGz/FuI1PWwEOz59j3E4TTTzSpqKb/RDGqJhhW0QHYISGXxq582wGx6T11Tw=="],
 

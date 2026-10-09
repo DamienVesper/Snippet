@@ -10,7 +10,7 @@ SPDX-License-Identifier: AGPL-3.0-only
     import Play from "@lucide/svelte/icons/play";
     import Trash from "@lucide/svelte/icons/trash";
 
-    import { Status } from "#lib/types/enums.ts";
+    import { Role, Status } from "#lib/types/enums.ts";
     import { helpers } from "#lib/utils/helpers.ts";
 
     const { data } = $props();
@@ -85,8 +85,10 @@ SPDX-License-Identifier: AGPL-3.0-only
                         <td>{dateFormatter.format(user.lastLoginAt)}</td>
                         <td>{numFormatter.format(user.uploads)}</td>
                         <td class="text-center">
-                            {#if user.discordId !== data.discordId}
+                            {#if user.discordId === data.discordId}
                                 <span class="text-secondary">You</span>
+                            {:else if user.role === Role.Admin}
+                                <span class="text-secondary">Protected</span>
                             {:else}
                                 <div class="flex justify-center gap-1">
                                     {#if user.status === Status.Unverified}

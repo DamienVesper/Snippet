@@ -29,7 +29,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@lucide/svelte": "^1.53.0",
+    "@lucide/svelte": "^1.54.0",
     "drizzle-orm": "^1.0.0-rc.5-ab785fc",
     "hjson": "^3.2.2",
     "pg": "^8.23.1",

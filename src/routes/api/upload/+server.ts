@@ -77,7 +77,7 @@ export const POST: RequestHandler = async ({ locals, request, url }) => {
             .from(User)
             .where(and(eq(User.apiKey, authKey), eq(User.status, Status.Verified)));
 
-        if (res.length === 0) throw error(401, "Authorization incorrect.");
+        if (res.length === 0) throw error(403, "You are not permitted to access this resource.");
 
         return Response.json({
             status: 200,
