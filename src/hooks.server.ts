@@ -5,6 +5,7 @@ import { redirect } from "@sveltejs/kit";
 import { type Handle } from "@sveltejs/kit/hooks";
 
 import { validateSession } from "#lib/server/auth.ts";
+import { Role } from "#lib/types/enums.ts";
 
 const hiddenPaths = ["/admin", "/dashboard", "/settings"];
 
@@ -35,6 +36,10 @@ export const handle: Handle = async ({ event, resolve }) => {
 
         event.locals.user = user;
         event.locals.session = session;
+
+        if (event.url.pathname.startsWith("/admin") && event.locals.user.role !== Role.Admin) {
+            throw redirect(302, "/dashboard");
+        }
     } else {
         event.cookies.delete("session", { path: "/" });
 
