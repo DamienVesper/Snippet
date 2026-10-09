@@ -38,7 +38,7 @@ async function saveFile(userId: UserType["id"], request: Request): Promise<strin
 
     // TODO: Check if this is slow.
     await fs.mkdir(storageDir, { recursive: true });
-    await fs.mkdir(MEDIA_PUBLIC_DIR);
+    await fs.mkdir(MEDIA_PUBLIC_DIR, { recursive: true });
 
     // We upload multi-gigabyte files! Do not complain about not using arraybuffer!!!
     await fs.writeFile(filePath, file.stream());
