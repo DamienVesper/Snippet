@@ -24,31 +24,6 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <article class="flex flex-col gap-2 rounded-lg border border-border bg-card p-5">
     <h1 class="text-2xl font-bold">Users</h1>
-    <h2 class="text-md font-semibold">Add User</h2>
-    <p class="text-sm text-secondary">Whitelist a Discord ID.</p>
-    <form action="/api/admin/users/add" class="mt-2 grid">
-        <div class="flex flex-col gap-2">
-            <label for="add-discord-id" class="text-xs font-semibold text-secondary uppercase">Discord User ID</label>
-            <div>
-                <input
-                    type="text"
-                    name="add-discord-id"
-                    id="add-discord-id"
-                    class="rounded-lg border border-border bg-background px-3 py-2 text-sm text-primary"
-                    placeholder="123456789012345678"
-                    pattern="\d\{(17, 20)}"
-                    autocomplete="off"
-                    required
-                />
-                <button
-                    type="submit"
-                    class="btn rounded-lg border border-border bg-accent px-6 py-2 text-sm font-semibold hover:bg-accent-hover"
-                >
-                    Add User
-                </button>
-            </div>
-        </div>
-    </form>
     <hr class="my-4 text-border" />
     <div class="max-w-full overflow-auto">
         <table class="w-full">
