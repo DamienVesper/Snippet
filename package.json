@@ -25,6 +25,7 @@
     "lint:fix": "oxlint --fix",
     "prepare": "svelte-kit sync || echo ''",
     "preview": "bunx --bun vite preview",
+    "start": "node build/index.js",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
