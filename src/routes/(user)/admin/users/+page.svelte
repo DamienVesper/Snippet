@@ -5,13 +5,12 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts">
     import { enhance } from "$app/forms";
-
-    import { Status } from "#lib/types/enums.ts";
-    import { helpers } from "#lib/utils/helpers.ts";
-
     import BadgeCheck from "@lucide/svelte/icons/badge-check";
     import Pause from "@lucide/svelte/icons/pause";
     import Trash from "@lucide/svelte/icons/trash";
+
+    import { Status } from "#lib/types/enums.ts";
+    import { helpers } from "#lib/utils/helpers.ts";
 
     const { data } = $props();
 
@@ -90,8 +89,13 @@ SPDX-License-Identifier: AGPL-3.0-only
                             {:else}
                                 <div class="flex justify-center gap-1">
                                     {#if user.status === Status.Verified}
-                                        <form action="?/suspend" method="POST" enctype="multipart/form-data" use:enhance>
-                                            <input type="hidden" name="target" value={user.discordId}>
+                                        <form
+                                            action="?/suspend"
+                                            method="POST"
+                                            enctype="multipart/form-data"
+                                            use:enhance
+                                        >
+                                            <input type="hidden" name="target" value={user.discordId} />
                                             <button
                                                 type="submit"
                                                 class="btn-darken rounded-sm bg-warning-bg px-2 py-1 text-xs font-semibold text-warning"
@@ -101,7 +105,7 @@ SPDX-License-Identifier: AGPL-3.0-only
                                         </form>
                                     {:else}
                                         <form action="?/verify" method="POST" enctype="multipart/form-data" use:enhance>
-                                            <input type="hidden" name="target" value={user.discordId}>
+                                            <input type="hidden" name="target" value={user.discordId} />
                                             <button
                                                 type="submit"
                                                 class="btn-darken rounded-sm bg-info-bg px-2 py-1 text-xs font-semibold text-info"
@@ -111,7 +115,7 @@ SPDX-License-Identifier: AGPL-3.0-only
                                         </form>
                                     {/if}
                                     <form action="?/delete" method="POST" enctype="multipart/form-data" use:enhance>
-                                        <input type="hidden" name="target" value={user.discordId}>
+                                        <input type="hidden" name="target" value={user.discordId} />
                                         <button
                                             type="submit"
                                             class="btn-darken rounded-sm bg-danger-bg px-2 py-1 text-xs font-semibold text-danger"

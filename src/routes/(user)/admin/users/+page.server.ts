@@ -1,9 +1,8 @@
 // SPDX-FileCopyrightText: 2026 Damien Vesper <ldamienvesper@gmail.com>
 // SPDX-License-Identifier: AGPL-3.0-only
 
-import { count, eq } from "drizzle-orm";
-
 import { fail } from "@sveltejs/kit";
+import { count, eq } from "drizzle-orm";
 
 import { db } from "#lib/server/db.ts";
 import { Media } from "#lib/server/models/Media.ts";
@@ -48,7 +47,7 @@ export const actions = {
         if (!target) return fail(400, { target, missing: true });
 
         await db.update(User).set({ status: Status.Suspended }).where(eq(User.discordId, target));
-    
+
         return { success: true };
     },
     verify: async ({ request }) => {
@@ -58,7 +57,7 @@ export const actions = {
         if (!target) return fail(400, { target, missing: true });
 
         await db.update(User).set({ status: Status.Verified }).where(eq(User.discordId, target));
-    
+
         return { success: true };
     }
-}
+};
