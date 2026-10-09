@@ -31,18 +31,23 @@ async function saveFile(userId: UserType["id"], request: Request): Promise<strin
 
     // Note: While I would love to use all 8 characters, the legacy project uses 6.
     const filename = crypto.randomBytes(6).toString("base64url").slice(0, 6) + ext;
-    const today = new Date();
 
-    const storageDir = `${MEDIA_STORAGE_DIR}/${today.getUTCFullYear()}/${today.getUTCMonth()}/${today.getUTCDate()}`;
-    const filePath = path.join(storageDir, file.name);
-
-    // TODO: Check if this is slow.
-    await fs.mkdir(storageDir, { recursive: true });
     await fs.mkdir(MEDIA_PUBLIC_DIR, { recursive: true });
 
-    // We upload multi-gigabyte files! Do not complain about not using arraybuffer!!!
-    await fs.writeFile(filePath, file.stream());
-    await fs.symlink(filePath, path.join(MEDIA_PUBLIC_DIR, filename), "file");
+    if (process.platform === "win32") {
+        // We upload multi-gigabyte files! Do not complain about not using arraybuffer!!!
+        await fs.writeFile(path.join(MEDIA_PUBLIC_DIR, filename), file.stream());
+    } else {
+        const today = new Date();
+        const storageDir = `${MEDIA_STORAGE_DIR}/${today.getUTCFullYear()}/${today.getUTCMonth()}/${today.getUTCDate()}`;
+        const filePath = path.join(storageDir, file.name);
+
+        // TODO: Check if this is slow.
+        await fs.mkdir(storageDir, { recursive: true });
+
+        await fs.writeFile(filePath, file.stream());
+        await fs.symlink(filePath, path.join(MEDIA_PUBLIC_DIR, filename), "file");
+    }
 
     await db.insert(Media).values({
         filename,
