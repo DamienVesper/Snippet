@@ -83,7 +83,7 @@ SPDX-License-Identifier: AGPL-3.0-only
                         <td>{dateFormatter.format(user.createdAt)}</td>
                         <td>{dateFormatter.format(user.lastLoginAt)}</td>
                         <td>{numFormatter.format(user.uploads)}</td>
-                        <td>
+                        <td class="text-center">
                             {#if user.discordId === data.discordId}
                                 <span class="text-secondary">You</span>
                             {:else}
