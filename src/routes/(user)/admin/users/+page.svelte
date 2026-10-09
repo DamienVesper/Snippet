@@ -4,8 +4,14 @@ SPDX-License-Identifier: AGPL-3.0-only
 -->
 
 <script lang="ts">
+    import { enhance } from "$app/forms";
+
     import { Status } from "#lib/types/enums.ts";
     import { helpers } from "#lib/utils/helpers.ts";
+
+    import BadgeCheck from "@lucide/svelte/icons/badge-check";
+    import Pause from "@lucide/svelte/icons/pause";
+    import Trash from "@lucide/svelte/icons/trash";
 
     const { data } = $props();
 
@@ -82,25 +88,37 @@ SPDX-License-Identifier: AGPL-3.0-only
                             {#if user.discordId === data.discordId}
                                 <span class="text-secondary">You</span>
                             {:else}
-                                <div class="flex flex-col gap-1">
+                                <div class="flex justify-center gap-1">
                                     {#if user.status === Status.Verified}
-                                        <button
-                                            class="btn-darken rounded-sm bg-warning-bg px-2 py-1 text-xs font-semibold text-warning"
-                                        >
-                                            Suspend
-                                        </button>
+                                        <form action="?/suspend" method="POST" enctype="multipart/form-data" use:enhance>
+                                            <input type="hidden" name="target" value={user.discordId}>
+                                            <button
+                                                type="submit"
+                                                class="btn-darken rounded-sm bg-warning-bg px-2 py-1 text-xs font-semibold text-warning"
+                                            >
+                                                <Pause />
+                                            </button>
+                                        </form>
                                     {:else}
-                                        <button
-                                            class="btn-darken rounded-sm bg-info-bg px-2 py-1 text-xs font-semibold text-info"
-                                        >
-                                            Verify
-                                        </button>
+                                        <form action="?/verify" method="POST" enctype="multipart/form-data" use:enhance>
+                                            <input type="hidden" name="target" value={user.discordId}>
+                                            <button
+                                                type="submit"
+                                                class="btn-darken rounded-sm bg-info-bg px-2 py-1 text-xs font-semibold text-info"
+                                            >
+                                                <BadgeCheck />
+                                            </button>
+                                        </form>
                                     {/if}
-                                    <button
-                                        class="btn-darken rounded-sm bg-danger-bg px-2 py-1 text-xs font-semibold text-danger"
-                                    >
-                                        Delete
-                                    </button>
+                                    <form action="?/delete" method="POST" enctype="multipart/form-data" use:enhance>
+                                        <input type="hidden" name="target" value={user.discordId}>
+                                        <button
+                                            type="submit"
+                                            class="btn-darken rounded-sm bg-danger-bg px-2 py-1 text-xs font-semibold text-danger"
+                                        >
+                                            <Trash />
+                                        </button>
+                                    </form>
                                 </div>
                             {/if}
                         </td>

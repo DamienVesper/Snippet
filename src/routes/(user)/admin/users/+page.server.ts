@@ -3,9 +3,12 @@
 
 import { count, eq } from "drizzle-orm";
 
+import { fail } from "@sveltejs/kit";
+
 import { db } from "#lib/server/db.ts";
 import { Media } from "#lib/server/models/Media.ts";
 import { User } from "#lib/server/models/User.ts";
+import { Status } from "#lib/types/enums.ts";
 
 import type { PageServerLoad } from "./$types";
 
@@ -27,3 +30,35 @@ export const load: PageServerLoad = async () => {
 
     return { users };
 };
+
+export const actions = {
+    delete: async ({ request }) => {
+        const formData = await request.formData();
+
+        const target = formData.get("target") as string | null;
+        if (!target) return fail(400, { target, missing: true });
+
+        // Currently, do nothing.
+        return { success: true };
+    },
+    suspend: async ({ request }) => {
+        const formData = await request.formData();
+
+        const target = formData.get("target") as string | null;
+        if (!target) return fail(400, { target, missing: true });
+
+        await db.update(User).set({ status: Status.Suspended }).where(eq(User.discordId, target));
+    
+        return { success: true };
+    },
+    verify: async ({ request }) => {
+        const formData = await request.formData();
+
+        const target = formData.get("target") as string | null;
+        if (!target) return fail(400, { target, missing: true });
+
+        await db.update(User).set({ status: Status.Verified }).where(eq(User.discordId, target));
+    
+        return { success: true };
+    }
+}

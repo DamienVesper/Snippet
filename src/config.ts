@@ -8,7 +8,7 @@ import { join } from "node:path";
 
 import { util } from "#lib/utils/util.ts";
 
-import type { Config, PartialConfig } from "./config.d";
+import type { Config, PartialConfig } from "./configType.d.ts";
 
 const CONFIG_FILENAME = "config.hjson";
 

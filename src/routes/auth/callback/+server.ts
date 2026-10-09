@@ -57,7 +57,8 @@ export const GET: RequestHandler = async ({ url, cookies }) => {
             target: User.discordId,
             set: {
                 username: userRes.data.username,
-                avatar: userRes.data.avatar
+                avatar: userRes.data.avatar,
+                lastLoginAt: new Date()
             }
         })
         .returning();
