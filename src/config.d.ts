@@ -110,9 +110,13 @@ export interface Config {
          */
         origin: string;
         /**
-         * Where media is stored on your physical server.
+         * The location where media files are stored on your physical server.
          */
         storageDir: string;
+        /**
+         * The location where media is symlinked to on your physical server.
+         */
+        publicDir: string;
     };
     /**
      * Secrets

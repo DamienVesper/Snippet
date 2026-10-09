@@ -40,9 +40,14 @@ export const variables = defineEnvVars({
             ),
         static: true
     },
-    MEDIA_DIR: {
-        description: "The location where media files are stored.",
+    MEDIA_STORAGE_DIR: {
+        description: "The location where media files are stored on your physical server.",
         schema: z.string().nonoptional().default(config.media.storageDir),
+        static: true
+    },
+    MEDIA_PUBLIC_DIR: {
+        description: "The location where media is symlinked to on your physical server.",
+        schema: z.string().nonoptional().default(config.media.publicDir),
         static: true
     }
 });

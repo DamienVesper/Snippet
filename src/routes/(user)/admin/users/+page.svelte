@@ -61,7 +61,7 @@ SPDX-License-Identifier: AGPL-3.0-only
                     <th class="border-b border-border bg-background-hover py-4">Created At</th>
                     <th class="border-b border-border bg-background-hover py-4">Last Login</th>
                     <th class="border-b border-border bg-background-hover py-4">Uploads</th>
-                    <th class="border-b border-border bg-background-hover py-4">Actions</th>
+                    <th class="border-b border-border bg-background-hover py-4 text-center!">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -108,15 +108,23 @@ SPDX-License-Identifier: AGPL-3.0-only
                                 <span class="text-secondary">You</span>
                             {:else}
                                 <div class="flex flex-col gap-1">
-                                    <button
-                                        class="btn-darken rounded-sm bg-warning-bg px-2 py-1 text-xs font-semibold text-warning"
-                                    >
-                                        Suspend
-                                    </button>
+                                    {#if user.status === Status.Verified}
+                                        <button
+                                            class="btn-darken rounded-sm bg-warning-bg px-2 py-1 text-xs font-semibold text-warning"
+                                        >
+                                            Suspend
+                                        </button>
+                                    {:else}
+                                        <button
+                                            class="btn-darken rounded-sm bg-info-bg px-2 py-1 text-xs font-semibold text-info"
+                                        >
+                                            Verify
+                                        </button>
+                                    {/if}
                                     <button
                                         class="btn-darken rounded-sm bg-danger-bg px-2 py-1 text-xs font-semibold text-danger"
                                     >
-                                        Remove
+                                        Delete
                                     </button>
                                 </div>
                             {/if}

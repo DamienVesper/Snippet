@@ -43,7 +43,8 @@ export function getConfig(isProd: boolean, dir: string): Config {
         },
         media: {
             origin: "http://127.0.0.1:3000",
-            storageDir: "/var/www/example.domain.tld/i"
+            storageDir: "/opt/Snippet/storage",
+            publicDir: "/var/www/example.domain.tld/i"
         },
         secrets: {}
     };
