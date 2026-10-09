@@ -7,6 +7,5 @@ export enum Role {
 export enum Status {
     Verified = "verified",
     Unverified = "unverified",
-    Suspended = "suspended",
-    Banned = "banned"
+    Suspended = "suspended"
 }

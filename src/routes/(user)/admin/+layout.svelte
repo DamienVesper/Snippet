@@ -9,5 +9,9 @@ SPDX-License-Identifier: AGPL-3.0-only
     const { children, data } = $props();
 </script>
 
-<AdminNav />
-{@render children()}
+<div class="container mx-auto">
+    <AdminNav />
+    <main class="mt-5 text-primary">
+        {@render children()}
+    </main>
+</div>

@@ -7,6 +7,13 @@ const BYTE_SIZES = ["B", "KiB", "MiB", "GiB"];
 
 export const helpers = {
     /**
+     * Capitalize a string.
+     * @param str The string to capitalize.
+     */
+    capitalize(str: string): string {
+        return str.slice(0, 1).toUpperCase() + str.slice(1);
+    },
+    /**
      * Safely fetch a URL without having to handle errors.
      * @param url The URL to fetch.
      * @param init Request options.

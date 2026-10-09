@@ -8,7 +8,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
     import { Role } from "#lib/types/enums.ts";
 
-    const { authenticated, role }: { authenticated: boolean; role: Role } = $props();
+    const { authenticated, role }: { authenticated: boolean; role: Role | undefined } = $props();
 </script>
 
 <header class="sticky top-0 z-100 border border-b-border bg-header-bg py-3">

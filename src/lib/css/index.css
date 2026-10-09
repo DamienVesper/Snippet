@@ -11,20 +11,26 @@
         system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans",
         sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
-    --color-primary: #e4e6ef;
-    --color-secondary: #8b90a5;
-    --color-background: #0f1117;
-    --color-card: #1a1d27;
-    --color-background-hover: hsl(226.67 20% 17.65%);
-    --color-accent: #5865f2;
-    --color-accent-hover: #4752c4;
-    --color-border: #2d3348;
+    --color-primary: oklch(0.93 0.01 276.09);
+    --color-secondary: oklch(0.66 0.03 274.9);
+    --color-background: oklch(0.18 0.01 270.6);
+    --color-card: oklch(0.23 0.02 271.76);
+    --color-background-hover: oklch(0.28 0.03 272.2);
+    --color-accent: oklch(0.58 0.21 273.85);
+    --color-accent-hover: oklch(0.5 0.18 273.91);
+    --color-border: oklch(0.32 0.04 271.83);
 
-    --color-header-bg: hsl(226.15 20% 12.75% / 0.85);
+    --color-header-bg: oklch(0.23 0.02 271.76 / 0.85);
 
-    --color-success: #3ba55d;
-    --color-danger: #ed4245;
-    --color-warning: #faa61a;
+    --color-info: oklch(0.78 0.11 280.11);
+    --color-success: oklch(0.64 0.14 150.7);
+    --color-warning: oklch(0.79 0.16 71.84);
+    --color-danger: oklch(0.63 0.21 24.57);
+
+    --color-info-bg: oklch(0.58 0.21 273.85 / 0.25);
+    --color-success-bg: oklch(0.64 0.14 150.7 / 0.2);
+    --color-warning-bg: oklch(0.79 0.16 71.84 / 0.25);
+    --color-danger-bg: oklch(0.34 0.13 26.43);
 
     --color-discord: hsl(234.94 85.56% 64.71%);
 }

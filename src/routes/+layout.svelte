@@ -18,6 +18,6 @@ SPDX-License-Identifier: AGPL-3.0-only
 	<link rel="icon" href={favicon} />
 </svelte:head> -->
 
-<Header authenticated={data.authenticated} />
+<Header authenticated={data.authenticated} role={data.role} />
 {@render children()}
 <Footer />
