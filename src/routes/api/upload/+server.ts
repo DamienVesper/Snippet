@@ -36,7 +36,9 @@ async function saveFile(userId: UserType["id"], request: Request): Promise<strin
     const storageDir = `${MEDIA_STORAGE_DIR}/${today.getUTCFullYear()}/${today.getUTCMonth()}/${today.getUTCDate()}`;
     const filePath = path.join(storageDir, file.name);
 
+    // TODO: Check if this is slow.
     await fs.mkdir(storageDir, { recursive: true });
+    await fs.mkdir(MEDIA_PUBLIC_DIR);
 
     // We upload multi-gigabyte files! Do not complain about not using arraybuffer!!!
     await fs.writeFile(filePath, file.stream());
