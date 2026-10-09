@@ -5,8 +5,8 @@ import { defineConfig } from "drizzle-kit";
 
 import { getConfig } from "./src/config.ts";
 
-const isProd = process.env.NODE_ENV === "production";
-const config = getConfig(isProd, "../");
+const isProd = import.meta.dirname.includes("server");
+const config = getConfig(isProd, isProd ? "../../../" : "../");
 
 export default defineConfig({
     out: "./dist",

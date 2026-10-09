@@ -11,7 +11,8 @@ import { util } from "#lib/utils/util.ts";
 import type { Config, PartialConfig } from "./config.d";
 
 const CONFIG_FILENAME = "config.hjson";
-const isProd = process.env.NODE_ENV === "production";
+
+const isProd = import.meta.dirname.includes("server");
 
 export function getConfig(isProd: boolean, dir: string): Config {
     const config: Config = {
@@ -90,4 +91,4 @@ export function saveConfig(dir: string, config: PartialConfig): void {
     }
 }
 
-export const config = getConfig(isProd, isProd ? "../../" : "../");
+export const config = getConfig(isProd, isProd ? "../../../" : "../");
