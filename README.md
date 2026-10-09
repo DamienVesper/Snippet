@@ -13,3 +13,19 @@
     <img src="https://img.shields.io/badge/drizzle-%23C5F74F?style=for-the-badge&logo=drizzle&logoColor=black">
     <img src="https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white">
 </div>
+
+
+## Prerequisites
+ * [bun](https://bun.sh)
+ * [Node.js](https://nodejs.org)
+ * [PostgreSQL](http://postgresql.org)
+
+## Installation
+In the root directory, run the following command to install packages for all directories and subdirectories.
+```sh
+bun ci
+```
+
+## Contributing
+Please follow the conventions found in `COMMIT_FORMAT.md`. Any changes must be made through a pull request.
+History rewrites are permitted on all branches except `master`. Squash / rebase as necessary to maintain a clean PR.
