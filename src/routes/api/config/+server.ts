@@ -20,7 +20,7 @@ export const GET: RequestHandler = async ({ locals }) => {
         },
         {
             headers: {
-                "Content-Disposition": `attachment; filename=Snippet-${locals.user.discordId}.sxcu`
+                "Content-Disposition": `attachment; filename=snippet-${locals.user.username}.sxcu`
             }
         }
     );
