@@ -74,8 +74,8 @@ SPDX-License-Identifier: AGPL-3.0-only
                 action="?/delete"
                 method="POST"
                 enctype="multipart/form-data"
-                use:enhance
                 class="mt-2 flex items-center text-xs text-secondary"
+                use:enhance
             >
                 <input type="hidden" name="target" value={media.filename} />
                 <div class="flex items-center gap-1">
