@@ -5,13 +5,11 @@ import { DATABASE_URL } from "$app/env/private";
 import { drizzle } from "drizzle-orm/node-postgres";
 import { Pool } from "pg";
 
-import { Logger } from "../utils/Logger.ts";
+import { logger } from "./logger.ts";
 
 const pool = new Pool({
     connectionString: DATABASE_URL
 });
-
-const logger = new Logger();
 
 pool.on("connect", () => {
     logger.info("PostgreSQL", "Connected to database.");

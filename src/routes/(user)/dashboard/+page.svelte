@@ -4,9 +4,11 @@ SPDX-License-Identifier: AGPL-3.0-only
 -->
 
 <script lang="ts">
+    import { MEDIA_MAX_PERM_SIZE } from "$app/env/public";
     import { enhance } from "$app/forms";
 
     import UploadCard from "#lib/components/dashboard/UploadCard.svelte";
+    import { helpers } from "#lib/utils/helpers.js";
 
     const { data } = $props();
 
@@ -65,7 +67,10 @@ SPDX-License-Identifier: AGPL-3.0-only
                 </button>
             </form>
             <p class="text-sm text-secondary">
-                Supports images, videos, and plaintext files. All files are stored permanently.
+                Supports images, videos, and plaintext files. Files larger than {helpers.formatBytes(
+                    Number(MEDIA_MAX_PERM_SIZE),
+                    0
+                )} are deleted after 7 days.
             </p>
         </section>
         <section>

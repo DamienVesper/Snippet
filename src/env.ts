@@ -49,5 +49,11 @@ export const variables = defineEnvVars({
         description: "The location where media is symlinked to on your physical server.",
         schema: z.string().nonoptional().default(config.media.publicDir),
         static: true
+    },
+    MEDIA_MAX_PERM_SIZE: {
+        description: "The maximum file size for permanent uploads, in bytes.",
+        public: true,
+        schema: z.string().nonoptional().default(config.media.maxPermanentSize.toString()),
+        static: true
     }
 });

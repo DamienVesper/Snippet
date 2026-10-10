@@ -6,6 +6,7 @@ import { parse, stringify } from "hjson";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
+import { Logger } from "#lib/utils/Logger.ts";
 import { util } from "#lib/utils/util.ts";
 
 import type { Config, PartialConfig } from "./configType.d.ts";
@@ -13,6 +14,14 @@ import type { Config, PartialConfig } from "./configType.d.ts";
 const CONFIG_FILENAME = "config.hjson";
 
 const isProd = import.meta.dirname.includes("server");
+
+const logger = new Logger({
+    info: true,
+    debug: false,
+    warn: false,
+    error: true,
+    timestamp: true
+});
 
 export function getConfig(isProd: boolean, dir: string): Config {
     const config: Config = {
@@ -45,7 +54,8 @@ export function getConfig(isProd: boolean, dir: string): Config {
         media: {
             origin: "http://127.0.0.1:3000",
             storageDir: "/opt/Snippet/storage",
-            publicDir: "/var/www/example.domain.tld/i"
+            publicDir: "/var/www/example.domain.tld/i",
+            maxPermanentSize: 104857600
         },
         secrets: {}
     };
@@ -55,12 +65,12 @@ export function getConfig(isProd: boolean, dir: string): Config {
     let localConfig: PartialConfig = {};
 
     if (existsSync(configPath)) {
-        console.log(`Sourcing config ${configPath}...`);
+        logger.info("Config Manager", `Sourcing config ${configPath}...`);
         const configText = readFileSync(configPath, "utf-8");
         localConfig = parse(configText);
-        console.log("Config file read succesfully.");
+        logger.info("Config Manager", "Config file read succesfully.");
     } else {
-        console.log("Config file doesn't exist, creating...");
+        logger.info("Config Manager", "Config file doesn't exist, creating...");
         localConfig = {
             ...config
             // NOTE: This is present if dynamic properties are to be added to the config.
@@ -68,7 +78,7 @@ export function getConfig(isProd: boolean, dir: string): Config {
         };
 
         writeFileSync(configPath, stringify(localConfig, { bracesSameLine: true }));
-        console.log("Config file created.");
+        logger.info("Config Manager", "Config file created.");
     }
 
     util.mergeDeep(config, localConfig);
@@ -85,9 +95,9 @@ export function saveConfig(dir: string, config: PartialConfig): void {
         const finalConfig = util.mergeDeep({}, localConfig, config);
 
         writeFileSync(configPath, stringify(finalConfig, { bracesSameLine: true }));
-        console.log("Saved config file.");
+        logger.info("Config Manager", "Saved config file.");
     } catch (err) {
-        console.error("Failed to save config:", err);
+        logger.error("Config Manager", "Failed to save config:", err);
     }
 }
 

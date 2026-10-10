@@ -117,6 +117,11 @@ export interface Config {
          * The location where media is symlinked to on your physical server.
          */
         publicDir: string;
+        /**
+         * The maximum file size for permanent uploads, in bytes.
+         * @default 104857600
+         */
+        maxPermanentSize: number;
     };
     /**
      * Secrets

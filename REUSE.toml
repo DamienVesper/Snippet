@@ -1,11 +1,18 @@
 version = 1
 
 [[annotations]]
+path = ["src/lib/img/favicon.ico"]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 Damien Vesper <ldamienvesper@gmail.com>"
+SPDX-License-Identifier = "AGPL-3.0-only"
+
+[[annotations]]
 path = [
     ".github/**",
     ".gitattributes",
     "**/.gitignore",
-    "**/*.conf",
+    "nginx.conf",
+    "systemd.service",
     "**/*.html",
     "**/*.json",
     "**/*.lock",

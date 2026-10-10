@@ -4,6 +4,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 -->
 
 <script lang="ts">
+    import { MEDIA_MAX_PERM_SIZE } from "$app/env/public";
     import { enhance } from "$app/forms";
     import Trash from "@lucide/svelte/icons/trash";
 
@@ -52,6 +53,19 @@ SPDX-License-Identifier: AGPL-3.0-only
             {formatter.format(media.createdAt)} &middot; {helpers.formatBytes(media.size)}
         </span>
         <br />
+        {#if media.size < Number(MEDIA_MAX_PERM_SIZE)}
+            <button
+                class="cursor-default rounded-sm bg-success-bg px-2 py-1 text-xs font-semibold text-success uppercase"
+            >
+                Permanent
+            </button>
+        {:else}
+            <button
+                class="cursor-default rounded-sm bg-warning-bg px-2 py-1 text-xs font-semibold text-warning uppercase"
+            >
+                Temporary
+            </button>
+        {/if}
         <a href="/i/{media.filename}" target="_blank" class="font-mono text-sm break-all text-accent hover:underline">
             /i/{media.filename}
         </a>
