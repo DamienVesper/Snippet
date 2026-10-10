@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 
 import { MEDIA_PUBLIC_DIR, MEDIA_STORAGE_DIR } from "$app/env/private";
+import { MEDIA_MAX_PERM_SIZE } from "$app/env/public";
 import { redirect } from "@sveltejs/kit";
 import { Cron } from "croner";
 import { and, gt, lt } from "drizzle-orm";
@@ -66,9 +67,11 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 // Try to delete old files every hour.
 new Cron("0 * * * *", async () => {
+    const maxAge = new Date(Date.now() - 7 * 864e5);
+
     const files = await db
         .delete(Media)
-        .where(and(gt(Media.size, 100 * 1024 ** 2), lt(Media.createdAt, new Date())))
+        .where(and(gt(Media.size, Number(MEDIA_MAX_PERM_SIZE)), lt(Media.createdAt, maxAge)))
         .returning({ createdAt: Media.createdAt, filename: Media.filename });
 
     if (files.length === 0) {
