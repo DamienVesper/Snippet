@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: 2026 Damien Vesper <ldamienvesper@gmail.com>
 // SPDX-License-Identifier: AGPL-3.0-only
 
-import { fail } from "@sveltejs/kit";
+import { fail, type Actions } from "@sveltejs/kit";
 import { asc, count, eq } from "drizzle-orm";
 
 import { db } from "#lib/server/db.ts";
@@ -31,7 +31,7 @@ export const load: PageServerLoad = async () => {
     return { users };
 };
 
-export const actions = {
+export const actions: Actions = {
     delete: async ({ request }) => {
         const formData = await request.formData();
 
