@@ -50,7 +50,7 @@
     "oxfmt": "^0.74.0",
     "oxlint": "^1.89.0",
     "sharp": "^0.35.5",
-    "svelte": "^5.57.2",
+    "svelte": "^5.57.3",
     "svelte-check": "^4.7.7",
     "svgo": "^4.1.0",
     "tailwindcss": "^4.3.3",
