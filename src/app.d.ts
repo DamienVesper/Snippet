@@ -1,5 +1,7 @@
-// SPDX-FileCopyrightText: 2026 Damien Vesper <ldamienvesper@gmail.com>
-// SPDX-License-Identifier: AGPL-3.0-only
+/*
+ * SPDX-FileCopyrightText: 2026 Damien Vesper <ldamienvesper@gmail.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
 
 import type { SessionType } from "#lib/server/models/Session.ts";
 import type { UserType } from "#lib/server/models/User.ts";

@@ -1,5 +1,7 @@
-// SPDX-FileCopyrightText: 2026 Damien Vesper <ldamienvesper@gmail.com>
-// SPDX-License-Identifier: AGPL-3.0-only
+/*
+ * SPDX-FileCopyrightText: 2026 Damien Vesper <ldamienvesper@gmail.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
 
 import { DATABASE_URL } from "$app/env/private";
 import { drizzle } from "drizzle-orm/node-postgres";

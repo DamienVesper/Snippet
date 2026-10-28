@@ -1,5 +1,7 @@
-// SPDX-FileCopyrightText: 2026 Damien Vesper <ldamienvesper@gmail.com>
-// SPDX-License-Identifier: AGPL-3.0-only
+/*
+ * SPDX-FileCopyrightText: 2026 Damien Vesper <ldamienvesper@gmail.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
 
 import { MEDIA_PUBLIC_DIR, MEDIA_STORAGE_DIR } from "$app/env/private";
 import { error } from "@sveltejs/kit";

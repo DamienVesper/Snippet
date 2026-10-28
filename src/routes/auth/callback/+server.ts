@@ -1,5 +1,7 @@
-// SPDX-FileCopyrightText: 2026 Damien Vesper <ldamienvesper@gmail.com>
-// SPDX-License-Identifier: AGPL-3.0-only
+/*
+ * SPDX-FileCopyrightText: 2026 Damien Vesper <ldamienvesper@gmail.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
 
 import { DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET, DISCORD_REDIRECT_URI } from "$app/env/private";
 import { error, redirect } from "@sveltejs/kit";
