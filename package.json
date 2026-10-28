@@ -29,7 +29,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@lucide/svelte": "^1.61.0",
+    "@lucide/svelte": "^1.63.0",
     "croner": "^10.0.1",
     "drizzle-orm": "^1.0.0-rc.5-ab785fc",
     "hjson": "^3.2.2",
@@ -48,7 +48,7 @@
     "discord-api-types": "^0.38.57",
     "drizzle-kit": "^1.0.0-rc.5-ab785fc",
     "oxfmt": "^0.74.0",
-    "oxlint": "^1.89.0",
+    "oxlint": "^1.90.0",
     "sharp": "^0.35.5",
     "svelte": "^5.57.3",
     "svelte-check": "^4.7.7",
