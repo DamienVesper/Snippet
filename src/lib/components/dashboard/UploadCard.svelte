@@ -8,10 +8,9 @@ SPDX-License-Identifier: AGPL-3.0-only
     import { enhance } from "$app/forms";
     import Trash from "@lucide/svelte/icons/trash";
 
-    import { helpers } from "#lib/utils/helpers.ts";
-
     import type { MediaType } from "#lib/server/models/Media.ts";
     import type { UserType } from "#lib/server/models/User.ts";
+    import { helpers } from "#lib/utils/helpers.ts";
 
     // oxfmt-ignore
     const {

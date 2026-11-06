@@ -6,6 +6,7 @@
 import { MEDIA_PUBLIC_DIR, MEDIA_STORAGE_DIR } from "$app/env/private";
 import { MEDIA_MAX_PERM_SIZE } from "$app/env/public";
 import { redirect } from "@sveltejs/kit";
+import type { Handle } from "@sveltejs/kit/hooks";
 import { Cron } from "croner";
 import { and, gt, lt } from "drizzle-orm";
 
@@ -17,8 +18,6 @@ import { db } from "#lib/server/db.ts";
 import { logger } from "#lib/server/logger.ts";
 import { Media } from "#lib/server/models/Media.ts";
 import { Role } from "#lib/types/enums.ts";
-
-import type { Handle } from "@sveltejs/kit/hooks";
 
 const hiddenPaths = ["/admin", "/dashboard", "/settings"];
 

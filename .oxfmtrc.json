@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
-  "ignorePatterns": ["**/build", "**/node_modules", "**/*.md"],
+  "ignorePatterns": ["**/build", "**/node_modules"],
   "overrides": [
     {
       "files": ["**/*.json", "**/*.yml"],
@@ -15,6 +15,12 @@
   "htmlWhitespaceSensitivity": "ignore",
   "printWidth": 120,
   "sortImports": {
+    "customGroups": [
+      {
+        "groupName": "workspace",
+        "elementNamePattern": ["@app/**"]
+      }
+    ],
     "groups": [
       "external",
       "builtin",
@@ -22,10 +28,11 @@
       "index",
       "sibling",
       "parent",
+      "workspace",
       "side_effect",
       "style",
       "side_effect_style",
-      "type"
+      "unknown"
     ],
     "newlinesBetween": true
   },

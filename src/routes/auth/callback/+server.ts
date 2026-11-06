@@ -5,6 +5,7 @@
 
 import { DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET, DISCORD_REDIRECT_URI } from "$app/env/private";
 import { error, redirect } from "@sveltejs/kit";
+import type { APIUser, RESTPostOAuth2AccessTokenResult } from "discord-api-types/v10";
 
 import { createSession, generateToken } from "#lib/server/auth.ts";
 import { db } from "#lib/server/db.ts";
@@ -12,7 +13,6 @@ import { User } from "#lib/server/models/User.ts";
 import { helpers } from "#lib/utils/helpers.ts";
 
 import type { RequestHandler } from "./$types";
-import type { APIUser, RESTPostOAuth2AccessTokenResult } from "discord-api-types/v10";
 
 export const GET: RequestHandler = async ({ url, cookies }) => {
     const code = url.searchParams.get("code");

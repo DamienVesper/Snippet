@@ -3,11 +3,10 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
+import type { InferSelectModel } from "drizzle-orm";
 import { pgTable } from "drizzle-orm/pg-core";
 
 import { User } from "./User.ts";
-
-import type { InferSelectModel } from "drizzle-orm";
 
 export const Session = pgTable("session", t => ({
     id: t.text().primaryKey(),

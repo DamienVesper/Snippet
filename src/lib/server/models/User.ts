@@ -3,13 +3,12 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
+import type { InferSelectModel } from "drizzle-orm";
 import { pgTable } from "drizzle-orm/pg-core";
 
 import { Role, Status } from "#lib/types/enums.ts";
 
 import { roles, status } from "./_constants.ts";
-
-import type { InferSelectModel } from "drizzle-orm";
 
 export const User = pgTable("user", t => ({
     id: t.serial().primaryKey(),

@@ -5,10 +5,10 @@
 
 import { error } from "@sveltejs/kit";
 
+import type { RequestHandler } from "./$types";
+
 import ShareXConfig from "../../../../ShareX.json" with { type: "json" };
 import { config } from "../../../config.ts";
-
-import type { RequestHandler } from "./$types";
 
 export const GET: RequestHandler = async ({ locals }) => {
     if (!locals.user) throw error(403, "User is not logged in.");
