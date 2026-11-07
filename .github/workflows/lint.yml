@@ -2,11 +2,12 @@ name: Lint
 on:
   push:
     branches:
-      - master
+      - main
     paths: &paths
       - "**.css"
       - "**.js"
       - "**.json"
+      - "**.md"
       - "**.ts"
       - "**.yml"
   pull_request:
