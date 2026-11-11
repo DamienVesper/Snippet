@@ -5,7 +5,7 @@
 
 import { pgEnum } from "drizzle-orm/pg-core";
 
-import { Role, Status } from "#lib/types/enums.ts";
+import { UserRole, UserStatus } from "#lib/types/enums.ts";
 
-export const roles = pgEnum("user_roles", Role);
-export const status = pgEnum("user_status", Status);
+export const userRole = pgEnum("user_role", UserRole);
+export const userStatus = pgEnum("user_status", UserStatus);

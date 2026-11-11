@@ -4,17 +4,21 @@
  */
 
 import type { InferSelectModel } from "drizzle-orm";
-import { pgTable } from "drizzle-orm/pg-core";
+import { index, pgTable } from "drizzle-orm/pg-core";
 
 import { User } from "./User.ts";
 
-export const Session = pgTable("session", t => ({
-    id: t.text().primaryKey(),
-    userId: t
-        .integer()
-        .notNull()
-        .references(() => User.id, { onDelete: "cascade" }),
-    expiresAt: t.timestamp({ withTimezone: true }).notNull()
-}));
+export const Session = pgTable(
+    "session",
+    t => ({
+        id: t.text().primaryKey(),
+        userId: t
+            .integer()
+            .notNull()
+            .references(() => User.id, { onDelete: "cascade" }),
+        expiresAt: t.timestamp({ withTimezone: true }).notNull()
+    }),
+    t => [index().on(t.userId)]
+);
 
 export type SessionType = InferSelectModel<typeof Session>;

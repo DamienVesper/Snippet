@@ -4,21 +4,27 @@
  */
 
 import type { InferSelectModel } from "drizzle-orm";
-import { pgTable } from "drizzle-orm/pg-core";
+import { index, pgTable } from "drizzle-orm/pg-core";
 
 import { User } from "./User.ts";
 
-export const Media = pgTable("media", t => ({
-    id: t.serial().primaryKey(),
-    filename: t.text().notNull().unique(),
-    name: t.text().notNull(),
-    size: t.integer().notNull(),
+export const Media = pgTable(
+    "media",
+    t => ({
+        id: t.integer().generatedAlwaysAsIdentity().primaryKey(),
 
-    userId: t
-        .integer()
-        .notNull()
-        .references(() => User.id, { onDelete: "cascade" }),
-    createdAt: t.timestamp({ withTimezone: true }).notNull().defaultNow()
-}));
+        name: t.text().notNull(),
+        filename: t.text().notNull().unique(),
+        mimeType: t.text().notNull().default("application/octet-stream"),
+        size: t.bigint({ mode: "number" }).notNull(),
+
+        userId: t
+            .integer()
+            .notNull()
+            .references(() => User.id, { onDelete: "cascade" }),
+        createdAt: t.timestamp({ withTimezone: true }).notNull().defaultNow()
+    }),
+    t => [index().on(t.userId)]
+);
 
 export type MediaType = InferSelectModel<typeof Media>;

@@ -70,12 +70,12 @@ SPDX-License-Identifier: AGPL-3.0-only
                         <td class="text-center">
                             <button
                                 class="cursor-default rounded-sm px-2 py-1 text-xs font-semibold"
-                                class:text-success={user.status === Status.Verified}
-                                class:bg-success-bg={user.status === Status.Verified}
-                                class:text-warning={user.status === Status.Unverified}
-                                class:bg-warning-bg={user.status === Status.Unverified}
-                                class:text-danger={user.status === Status.Suspended}
-                                class:bg-danger-bg={user.status === Status.Suspended}
+                                class:text-success={user.status === UserStatus.Verified}
+                                class:bg-success-bg={user.status === UserStatus.Verified}
+                                class:text-warning={user.status === UserStatus.Unverified}
+                                class:bg-warning-bg={user.status === UserStatus.Unverified}
+                                class:text-danger={user.status === UserStatus.Suspended}
+                                class:bg-danger-bg={user.status === UserStatus.Suspended}
                                 disabled
                             >
                                 {helpers.capitalize(user.status)}
@@ -87,11 +87,11 @@ SPDX-License-Identifier: AGPL-3.0-only
                         <td class="text-center">
                             {#if user.discordId === data.discordId}
                                 <span class="text-secondary">You</span>
-                            {:else if user.role === Role.Admin}
+                            {:else if user.role === UserRole.Admin}
                                 <span class="text-secondary">Protected</span>
                             {:else}
                                 <div class="flex justify-center gap-1">
-                                    {#if user.status === Status.Unverified}
+                                    {#if user.status === UserStatus.Unverified}
                                         <form action="?/verify" method="POST" enctype="multipart/form-data" use:enhance>
                                             <input type="hidden" name="target" value={user.discordId} />
                                             <button
@@ -102,7 +102,7 @@ SPDX-License-Identifier: AGPL-3.0-only
                                             </button>
                                         </form>
                                     {:else}
-                                        {#if user.status !== Status.Suspended}
+                                        {#if user.status !== UserStatus.Suspended}
                                             <form
                                                 action="?/suspend"
                                                 method="POST"

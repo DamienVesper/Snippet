@@ -6,6 +6,7 @@
 import { MEDIA_PUBLIC_DIR, MEDIA_STORAGE_DIR } from "$app/env/private";
 import { error } from "@sveltejs/kit";
 import { and, eq } from "drizzle-orm";
+import { fileTypeFromStream } from "file-type";
 
 import crypto from "node:crypto";
 import fs from "node:fs/promises";
@@ -14,7 +15,7 @@ import path from "node:path";
 import { db } from "#lib/server/db.ts";
 import { Media } from "#lib/server/models/Media.ts";
 import { User, type UserType } from "#lib/server/models/User.ts";
-import { Status } from "#lib/types/enums.ts";
+import { UserStatus } from "#lib/types/enums.ts";
 
 import type { RequestHandler } from "./$types";
 
@@ -33,6 +34,10 @@ async function saveFile(userId: UserType["id"], request: Request): Promise<strin
 
     // Note: While I would love to use all 8 characters, the legacy project uses 6.
     const filename = crypto.randomBytes(6).toString("base64url").slice(0, 6) + ext;
+    const mimeType =
+        ((await fileTypeFromStream(file.stream()))?.mime ?? file.type.startsWith("text/"))
+            ? "text/plain"
+            : "application/octet-stream";
 
     await fs.mkdir(MEDIA_PUBLIC_DIR, { recursive: true });
 
@@ -54,6 +59,7 @@ async function saveFile(userId: UserType["id"], request: Request): Promise<strin
     await db.insert(Media).values({
         filename,
         name: file.name,
+        mimeType,
         size: file.size,
         userId
     });
@@ -77,7 +83,7 @@ export const POST: RequestHandler = async ({ locals, request, url }) => {
         const res = await db
             .select({ id: User.id })
             .from(User)
-            .where(and(eq(User.apiKey, authKey), eq(User.status, Status.Verified)));
+            .where(and(eq(User.apiKey, authKey), eq(User.status, UserStatus.Verified)));
 
         if (res.length === 0) throw error(403, "You are not permitted to access this resource.");
 

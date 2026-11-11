@@ -17,7 +17,7 @@ import { validateSession } from "#lib/server/auth.ts";
 import { db } from "#lib/server/db.ts";
 import { logger } from "#lib/server/logger.ts";
 import { Media } from "#lib/server/models/Media.ts";
-import { Role } from "#lib/types/enums.ts";
+import { UserRole } from "#lib/types/enums.ts";
 
 const hiddenPaths = ["/admin", "/dashboard", "/settings"];
 
@@ -49,7 +49,7 @@ export const handle: Handle = async ({ event, resolve }) => {
         event.locals.user = user;
         event.locals.session = session;
 
-        if (event.url.pathname.startsWith("/admin") && event.locals.user.role !== Role.Admin) {
+        if (event.url.pathname.startsWith("/admin") && event.locals.user.role !== UserRole.Admin) {
             throw redirect(302, "/dashboard");
         }
     } else {

@@ -9,7 +9,7 @@ import { asc, count, eq } from "drizzle-orm";
 import { db } from "#lib/server/db.ts";
 import { Media } from "#lib/server/models/Media.ts";
 import { User } from "#lib/server/models/User.ts";
-import { Status } from "#lib/types/enums.ts";
+import { UserStatus } from "#lib/types/enums.ts";
 
 import type { PageServerLoad } from "./$types";
 
@@ -49,7 +49,7 @@ export const actions: Actions = {
         const target = formData.get("target") as string | null;
         if (!target) return fail(400, { target, missing: true });
 
-        await db.update(User).set({ status: Status.Suspended }).where(eq(User.discordId, target));
+        await db.update(User).set({ status: UserStatus.Suspended }).where(eq(User.discordId, target));
 
         return { success: true };
     },
@@ -59,7 +59,7 @@ export const actions: Actions = {
         const target = formData.get("target") as string | null;
         if (!target) return fail(400, { target, missing: true });
 
-        await db.update(User).set({ status: Status.Verified }).where(eq(User.discordId, target));
+        await db.update(User).set({ status: UserStatus.Verified }).where(eq(User.discordId, target));
 
         return { success: true };
     }

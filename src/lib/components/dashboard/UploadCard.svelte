@@ -21,12 +21,12 @@ SPDX-License-Identifier: AGPL-3.0-only
         | {
             adminView: true;
             formatter: Intl.DateTimeFormat;
-            media: Pick<MediaType, "createdAt" | "filename" | "name" | "size"> & Pick<UserType, "avatar" | "discordId" | "username">;
+            media: Pick<MediaType, "createdAt" | "filename" | "name" | "mimeType" | "size"> & Pick<UserType, "avatar" | "discordId" | "username">;
         }
         | {
             adminView: false;
             formatter: Intl.DateTimeFormat;
-            media: Pick<MediaType, "createdAt" | "filename" | "name" | "size">;
+            media: Pick<MediaType, "createdAt" | "filename" | "name" | "mimeType" | "size">;
         } = $props();
 </script>
 
@@ -37,11 +37,13 @@ SPDX-License-Identifier: AGPL-3.0-only
         class="relative flex aspect-video flex-col items-center justify-center gap-[0.35rem] overflow-hidden bg-background-hover"
     >
         <!-- TODO: Find better way to determine video vs. img vs. document files. -->
-        {#if media.filename.endsWith(".mp4") || media.filename.endsWith(".mov") || media.filename.endsWith(".mkv") || media.filename.endsWith(".webm")}
+        {#if media.mimeType.startsWith("video/")}
             <!-- svelte-ignore a11y_media_has_caption -->
             <video src="/i/{media.filename}" preload="metadata" class="h-full w-full max-w-full"></video>
-        {:else}
+        {:else if media.mimeType.startsWith("image/")}
             <img src="/i/{media.filename}" alt="" loading="lazy" class="h-full w-full max-w-full" />
+        {:else}
+            <span class="h-full w-full text-secondary">No preview available.</span>
         {/if}
     </a>
     <div class="px-4 py-[0.85rem]">

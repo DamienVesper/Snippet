@@ -3,12 +3,12 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-export enum Role {
+export enum UserRole {
     Admin = "admin",
     Member = "member"
 }
 
-export enum Status {
+export enum UserStatus {
     Verified = "verified",
     Unverified = "unverified",
     Suspended = "suspended"
