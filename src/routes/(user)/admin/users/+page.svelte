@@ -10,7 +10,7 @@ SPDX-License-Identifier: AGPL-3.0-only
     import Play from "@lucide/svelte/icons/play";
     import Trash from "@lucide/svelte/icons/trash";
 
-    import { Role, Status } from "#lib/types/enums.ts";
+    import { UserRole, UserStatus } from "#lib/types/enums.ts";
     import { helpers } from "#lib/utils/helpers.ts";
 
     const { data } = $props();
