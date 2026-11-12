@@ -25,10 +25,6 @@
         "ignorePackages": true,
         "pathGroupOverrides": [
           {
-            "pattern": "**/*.d",
-            "action": "ignore"
-          },
-          {
             "pattern": "**/*.svelte",
             "action": "ignore"
           },
